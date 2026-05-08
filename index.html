@@ -3,92 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI新闻日报 - 识墨出品</title>
+<title>识墨AI - 每日AI行业资讯精选</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
-.container { max-width:900px; margin:0 auto; padding:0 20px; }
-header { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:40px 0; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-header h1 { font-size:2.2em; margin-bottom:8px; }
-.subtitle { font-size:1.1em; opacity:0.9; }
-footer { background:#2d3748; color:#a0aec0; padding:24px 0; text-align:center; font-size:0.88em; margin-top:40px; }
-.section { background:white; border-radius:12px; padding:24px; margin:20px 0; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
-.section h2 { font-size:1.4em; color:#667eea; border-bottom:2px solid #f0f0f0; padding-bottom:10px; margin-bottom:16px; }
-.item { padding:14px 0; border-bottom:1px solid #f5f5f5; }
-.item h3 { font-size:1.05em; font-weight:600; margin-bottom:6px; }
-.item p { font-size:0.92em; color:#666; }
-.item a { color:#667eea; text-decoration:none; font-size:0.88em; }
-table { width:100%; border-collapse:collapse; font-size:0.9em; }
-th { background:#f8f9fa; padding:10px 12px; text-align:left; border-bottom:2px solid #e8e8e8; }
-td { padding:10px 12px; border-bottom:1px solid #f0f0f0; }
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+}
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+
+/* 导航栏 */
+nav { background:white; box-shadow:0 1px 3px rgba(0,0,0,0.08); position:sticky; top:0; z-index:100; }
+.nav-inner { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav-logo { font-size:1.3em; font-weight:700; color:var(--primary); text-decoration:none; display:flex; align-items:center; gap:8px; }
+.nav-links { display:flex; gap:32px; }
+.nav-links a { color:var(--text-light); text-decoration:none; font-size:0.95em; transition:color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--primary); }
+.nav-links a.active { font-weight:600; }
+
+/* Hero区域 */
+.hero { background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); color:white; padding:80px 24px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+.hero-content { max-width:700px; margin:0 auto; position:relative; }
+.hero h1 { font-size:2.8em; font-weight:800; margin-bottom:16px; letter-spacing:-0.02em; }
+.hero p { font-size:1.2em; opacity:0.92; margin-bottom:32px; }
+.hero-badges { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.badge { background:rgba(255,255,255,0.2); padding:8px 20px; border-radius:100px; font-size:0.9em; backdrop-filter:blur(4px); }
+
+/* 核心功能 */
+.features { max-width:1100px; margin:-40px auto 40px; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; position:relative; z-index:1; }
+.feature-card { background:white; border-radius:16px; padding:28px; box-shadow:0 4px 20px rgba(0,0,0,0.06); transition:transform 0.3s,box-shadow 0.3s; }
+.feature-card:hover { transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,0,0,0.1); }
+.feature-icon { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6em; margin-bottom:16px; }
+.feature-icon.blue { background:#eff6ff; }
+.feature-icon.pink { background:#fdf2f8; }
+.feature-icon.green { background:#f0fdf4; }
+.feature-icon.purple { background:#f5f3ff; }
+.feature-card h3 { font-size:1.1em; font-weight:700; margin-bottom:8px; }
+.feature-card p { font-size:0.88em; color:var(--text-light); }
+
+/* 最新日报 */
+.latest { max-width:1100px; margin:0 auto; padding:0 24px 60px; }
+.section-title { font-size:1.5em; font-weight:700; margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+.section-title::before { content:''; width:4px; height:28px; background:linear-gradient(180deg,var(--primary),var(--secondary)); border-radius:2px; }
+
+.today-card { background:white; border-radius:16px; padding:32px; box-shadow:0 2px 12px rgba(0,0,0,0.05); border:1px solid var(--border); }
+.today-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--border); }
+.today-title { font-size:1.3em; font-weight:700; color:var(--primary); }
+.today-date { color:var(--text-light); font-size:0.9em; }
+.today-badges { display:flex; gap:8px; }
+.today-badge { background:#f1f5f9; color:var(--text-light); padding:4px 12px; border-radius:100px; font-size:0.8em; }
+.highlights-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-bottom:24px; }
+.highlight-item { background:linear-gradient(135deg,#f8fafc,#f1f5f9); padding:16px; border-radius:12px; border-left:3px solid var(--primary); }
+.highlight-item h4 { font-size:0.95em; font-weight:600; margin-bottom:4px; }
+.highlight-item p { font-size:0.85em; color:var(--text-light); }
+.today-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { padding:12px 24px; border-radius:10px; font-size:0.95em; font-weight:600; text-decoration:none; transition:all 0.2s; cursor:pointer; border:none; }
+.btn-primary { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:white; }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 4px 15px rgba(99,102,241,0.35); }
+.btn-outline { background:white; color:var(--primary); border:2px solid var(--primary); }
+.btn-outline:hover { background:var(--primary); color:white; }
+
+/* 历史存档 */
+.archive { max-width:1100px; margin:0 auto 60px; padding:0 24px; }
+.archive-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+.archive-item { background:white; border-radius:12px; padding:20px; text-align:center; box-shadow:0 1px 6px rgba(0,0,0,0.04); border:1px solid var(--border); text-decoration:none; color:inherit; transition:all 0.2s; }
+.archive-item:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.08); border-color:var(--primary); }
+.archive-item .date { font-size:1.5em; font-weight:700; color:var(--primary); }
+.archive-item .day { font-size:0.85em; color:var(--text-light); margin-top:4px; }
+.archive-item .arrow { margin-top:12px; color:var(--primary); font-size:0.8em; }
+
+/* 关于 */
+.about { max-width:1100px; margin:0 auto 60px; padding:0 24px; }
+.about-card { background:white; border-radius:16px; padding:40px; box-shadow:0 2px 12px rgba(0,0,0,0.05); border:1px solid var(--border); }
+.about-card h2 { font-size:1.3em; margin-bottom:16px; }
+.about-card p { color:var(--text-light); margin-bottom:20px; line-height:1.9; }
+.stats { display:flex; gap:40px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat-num { font-size:2em; font-weight:800; color:var(--primary); }
+.stat-label { font-size:0.85em; color:var(--text-light); }
+
+/* 页脚 */
+footer { background:#1e293b; color:#94a3b8; padding:40px 24px; text-align:center; }
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-inner p { margin-bottom:8px; font-size:0.9em; }
+.footer-inner a { color:white; text-decoration:none; }
+.footer-inner a:hover { text-decoration:underline; }
+
+@media (max-width:768px) {
+  .hero h1 { font-size:2em; }
+  .nav-links { display:none; }
+  .today-header { flex-direction:column; gap:12px; }
+}
 </style>
 </head>
 <body>
-<header>
-<div class="container">
-<h1>AI新闻日报</h1>
-<p class="subtitle">识墨出品 · 每日12:00更新</p>
-<p style="opacity:0.8;font-size:0.95em;margin-top:4px;">报告日期：2026年5月8日</p>
+
+<!-- 导航栏 -->
+<nav>
+<div class="nav-inner">
+<a href="/" class="nav-logo">🖋️ 识墨AI</a>
+<div class="nav-links">
+<a href="/" class="active">首页</a>
+<a href="/news/">日报存档</a>
+<a href="#about">关于我们</a>
 </div>
-</header>
-<main class="container">
-<div style="background:#fff8e1;padding:16px;border-radius:8px;margin:20px 0;border-left:4px solid #667eea;">
-<h3 style="color:#667eea;margin-bottom:8px;">今日要点速览</h3>
-<p style="font-size:0.95em;line-height:1.8;">
-1. Anthropic估值冲破1.2万亿美元，首次反超OpenAI<br>
-2. Claude Managed Agents四项新功能，Harvey任务完成率提升6倍<br>
-3. OpenAI推出三款实时语音模型<br>
-4. DeepSeek-TUI单日新增5,799星，创GitHub记录<br>
-5. 北大95后用AI改造旅游，Gopagoda月收入破10万美金
-</p>
+</div>
+</nav>
+
+<!-- Hero区域 -->
+<section class="hero">
+<div class="hero-content">
+<h1>每日AI行业资讯精选</h1>
+<p>追踪大模型前沿动态 · 挖掘一人公司创业灵感 · 洞察AI行业趋势</p>
+<div class="hero-badges">
+<span class="badge">📰 每日更新</span>
+<span class="badge">🔍 精选内容</span>
+<span class="badge">⚡ 快速阅读</span>
+</div>
+</div>
+</section>
+
+<!-- 核心功能 -->
+<section class="features">
+<div class="feature-card">
+<div class="feature-icon blue">🧠</div>
+<h3>大模型动态</h3>
+<p>实时追踪GPT、Claude、DeepSeek等主流大模型更新，第一时间获取技术进展</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon pink">🚀</div>
+<h3>开源项目速递</h3>
+<p>精选GitHub热门开源项目，发现值得关注的AI工具与技术方案</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon green">💡</div>
+<h3>一人公司案例</h3>
+<p>分享AI时代的创业故事，学习如何用最小团队创造最大价值</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon purple">🔮</div>
+<h3>行业趋势分析</h3>
+<p>深度解读AI行业最新动向，助您把握技术发展趋势与商业机会</p>
+</div>
+</section>
+
+<!-- 最新日报 -->
+<section class="latest">
+<h2 class="section-title">📋 最新日报</h2>
+<div class="today-card">
+<div class="today-header">
+<div>
+<div class="today-title">📰 今日AI新闻日报</div>
+<div class="today-date">2026年5月8日 · 星期四</div>
+</div>
+<div class="today-badges">
+<span class="today-badge">大模型</span>
+<span class="today-badge">开源项目</span>
+<span class="today-badge">一人公司</span>
+</div>
 </div>
 
-<div class="section">
-<h2>大模型更新</h2>
-<div class="item">
-<h3>Anthropic估值冲破1.2万亿美元，首次反超OpenAI</h3>
-<p>Anthropic在Pre-IPO市场估值达1.2万亿美元。今年一季度年化收入同比增长80倍，获得SpaceX的22万GPU和谷歌2000亿美元云服务协议。</p>
-<p><a href="https://www.aitntnews.com/newDetail.html?newId=24843" target="_blank">查看详情 →</a></p>
+<div class="highlights-grid">
+<div class="highlight-item">
+<h4>🔥 Anthropic估值冲破1.2万亿美元</h4>
+<p>首次反超OpenAI，年化收入同比增长80倍</p>
 </div>
-<div class="item">
-<h3>OpenAI推出三款实时语音模型</h3>
-<p>GPT-Realtime-2（复杂语音交互）、GPT-Realtime-Translate（多语言翻译）、GPT-Realtime-Whisper（音频转录）全面发布。</p>
-<p><a href="https://www.aitntnews.com/newDetail.html?newId=24847" target="_blank">查看详情 →</a></p>
+<div class="highlight-item">
+<h4>🎯 Claude Managed Agents新功能</h4>
+<p>梦境+结果验收，Harvey任务完成率提升6倍</p>
 </div>
-<div class="item">
-<h3>Claude Managed Agents四项新功能</h3>
-<p>梦境、结果验收、多智能体编排、Webhooks。启用梦境后Harvey任务完成率提升约6倍。</p>
-<p><a href="https://www.aitntnews.com/newDetail.html?newId=24844" target="_blank">查看详情 →</a></p>
+<div class="highlight-item">
+<h4>⚡ DeepSeek-TUI创记录</h4>
+<p>单日新增5,799星，登顶GitHub热门榜首</p>
+</div>
+<div class="highlight-item">
+<h4>💰 北大95后AI创业</h4>
+<p>Gopagoda月收入破10万美金，团队不到10人</p>
 </div>
 </div>
 
-<div class="section">
-<h2>GitHub热门项目 Top 5</h2>
-<table>
-<tr><th>排名</th><th>项目</th><th>语言</th><th>今日新增</th></tr>
-<tr><td>1</td><td><a href="https://github.com/Hmbown/DeepSeek-TUI">DeepSeek-TUI</a></td><td>Rust</td><td style="color:#667eea;font-weight:600;">+5,799</td></tr>
-<tr><td>2</td><td><a href="https://github.com/addyosmani/agent-skills">agent-skills</a></td><td>Shell</td><td style="color:#667eea;font-weight:600;">+3,062</td></tr>
-<tr><td>3</td><td><a href="https://github.com/anthropics/financial-services">financial-services</a></td><td>Python</td><td style="color:#667eea;font-weight:600;">+1,343</td></tr>
-<tr><td>4</td><td><a href="https://github.com/VectifyAI/PageIndex">PageIndex</a></td><td>Python</td><td style="color:#667eea;font-weight:600;">+943</td></tr>
-<tr><td>5</td><td><a href="https://github.com/docusealco/docuseal">docuseal</a></td><td>Ruby</td><td style="color:#667eea;font-weight:600;">+900</td></tr>
-</table>
-<p style="margin-top:12px;font-size:0.88em;color:#999;">完整榜单详见 <a href="https://github.com/trending?since=daily" target="_blank">GitHub Trending</a></p>
+<div class="today-actions">
+<a href="news/2026-05-08.html" class="btn btn-primary">阅读全文 →</a>
+<a href="/news/" class="btn btn-outline">查看历史存档</a>
 </div>
+</div>
+</section>
 
-<div class="section">
-<h2>OPC一人公司</h2>
-<div class="item">
-<h3>北大95后用AI改造旅游行业</h3>
-<p>北大95后赵万荣创立Gopagoda，团队不到10人，月收入达10万美金并实现盈利。</p>
+<!-- 历史存档 -->
+<section class="archive">
+<h2 class="section-title">📚 历史存档</h2>
+<div class="archive-grid">
+<a href="news/" class="archive-item">
+<div class="date">05/07</div>
+<div class="day">2026年5月7日</div>
+<div class="arrow">查看 →</div>
+</a>
+<a href="news/" class="archive-item">
+<div class="date">05/06</div>
+<div class="day">2026年5月6日</div>
+<div class="arrow">查看 →</div>
+</a>
+<a href="news/" class="archive-item">
+<div class="date">05/05</div>
+<div class="day">2026年5月5日</div>
+<div class="arrow">查看 →</div>
+</a>
+<a href="news/" class="archive-item">
+<div class="date">05/04</div>
+<div class="day">2026年5月4日</div>
+<div class="arrow">查看 →</div>
+</a>
+</div>
+</section>
+
+<!-- 关于我们 -->
+<section class="about" id="about">
+<div class="about-card">
+<h2>关于识墨AI</h2>
+<p>识墨AI是一个专注于AI行业资讯的个人项目，由 WorkBuddy 自动化驱动，每日12:00准时更新。我们致力于为AI从业者、创业者提供精简、有价值的行业资讯，帮助您节省信息筛选的时间，专注于真正重要的事情。</p>
+<div class="stats">
+<div class="stat">
+<div class="stat-num">365</div>
+<div class="stat-label">全年无休更新</div>
+</div>
+<div class="stat">
+<div class="stat-num">5</div>
+<div class="stat-label">内容分类覆盖</div>
+</div>
+<div class="stat">
+<div class="stat-num">∞</div>
+<div class="stat-label">知识持续积累</div>
 </div>
 </div>
-</main>
+</div>
+</section>
+
+<!-- 页脚 -->
 <footer>
-<div class="container">
-<p>© 2026 识墨AI · Powered by WorkBuddy</p>
+<div class="footer-inner">
+<p>© 2026 识墨AI · Powered by <a href="https://www.codebuddy.cn" target="_blank">WorkBuddy</a></p>
 <p>数据来源：AITNT News · GitHub Trending · 新浪科技</p>
-<p style="margin-top:8px;font-size:0.82em;">最后更新：2026年5月8日 12:00</p>
+<p style="margin-top:16px;opacity:0.7;font-size:0.82em;">用心做好每一份资讯 · 用AI服务AI从业者</p>
 </div>
 </footer>
+
 </body>
 </html>
