@@ -30,17 +30,28 @@ nav { background:white; box-shadow:0 1px 3px rgba(0,0,0,0.08); position:sticky; 
 .header h1 { font-size:1.8em; font-weight:700; margin-bottom:8px; }
 .header p { color:var(--text-light); }
 
-.archive-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; }
-.archive-card { background:white; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04); border:1px solid var(--border); text-decoration:none; color:inherit; transition:all 0.2s; display:block; }
+.archive-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+
+.archive-card {
+  background:white; border-radius:12px; padding:24px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+  border:1px solid var(--border); text-decoration:none; color:inherit;
+  transition:all 0.2s; display:block; position:relative; overflow:hidden;
+}
+.archive-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity:0; transition:opacity 0.2s;
+}
+.archive-card:hover::before { opacity:1; }
 .archive-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.08); border-color:var(--primary); }
 .archive-date { font-size:1.4em; font-weight:700; color:var(--primary); margin-bottom:4px; }
 .archive-weekday { font-size:0.85em; color:var(--text-light); margin-bottom:12px; }
 .archive-preview { font-size:0.85em; color:var(--text-light); line-height:1.6; }
-.archive-arrow { margin-top:16px; color:var(--primary); font-size:0.9em; }
+.archive-arrow { margin-top:16px; color:var(--primary); font-size:0.9em; font-weight:500; }
 
-.empty-state { text-align:center; padding:80px 24px; color:var(--text-light); }
-.empty-state .icon { font-size:4em; margin-bottom:16px; }
-.empty-state h2 { font-size:1.3em; margin-bottom:8px; color:var(--text); }
+/* 将最新一条高亮显示 */
+.archive-card:first-child { border-color:var(--primary); background:linear-gradient(135deg, #eef2ff, #faf5ff); }
 
 footer { background:#1e293b; color:#94a3b8; padding:40px 24px; text-align:center; }
 .footer-inner { max-width:1100px; margin:0 auto; }
@@ -48,6 +59,7 @@ footer { background:#1e293b; color:#94a3b8; padding:40px 24px; text-align:center
 
 @media (max-width:768px) {
   .nav-links { display:none; }
+  .archive-list { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -71,30 +83,39 @@ footer { background:#1e293b; color:#94a3b8; padding:40px 24px; text-align:center
 </div>
 
 <div class="archive-list">
+
+<a href="2026-05-10.html" class="archive-card">
+<div class="archive-date">2026-05-10</div>
+<div class="archive-weekday">星期六 · 第130天</div>
+<div class="archive-preview">
+百度文心5.1发布，预训练成本仅业界6%<br>
+月之暗面Kimi完成20亿美元融资<br>
+DeepSeek启动首轮融资，最高500亿元<br>
+Anthropic估值飙至1.2万亿美元<br>
+Claude Orbit主动助手功能曝光
+</div>
+<div class="archive-arrow">阅读全文 →</div>
+</a>
+
 <a href="2026-05-08.html" class="archive-card">
 <div class="archive-date">2026-05-08</div>
 <div class="archive-weekday">星期四</div>
 <div class="archive-preview">
-• Anthropic估值冲破1.2万亿<br>
-• Claude Managed Agents新功能<br>
-• DeepSeek-TUI单日+5,799星<br>
-• 北大95后AI创业案例
+Anthropic估值冲破1.2万亿<br>
+Claude Managed Agents新功能<br>
+DeepSeek-TUI单日+5,799星<br>
+北大95后AI创业案例
 </div>
 <div class="archive-arrow">阅读全文 →</div>
 </a>
-</div>
 
-<div class="empty-state">
-<div class="icon">📅</div>
-<h2>更多日报整理中</h2>
-<p>日报将每日自动归档，历史存档将持续更新</p>
 </div>
 </main>
 
 <footer>
 <div class="footer-inner">
 <p>© 2026 识墨AI · Powered by WorkBuddy</p>
-<p>数据来源：AITNT News · GitHub Trending · 新浪科技</p>
+<p>数据来源：AITNT News · GitHub Trending · 新浪科技 · 腾讯新闻</p>
 </div>
 </footer>
 
