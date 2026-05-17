@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>识墨AI日报 2026年5月17日</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #ec4899;
+  --bg: #f8fafc;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --card-bg: #ffffff;
+  --accent-red: #ef4444;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-orange: #f59e0b;
+  --accent-purple: #8b5cf6;
+}
+body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+
+nav { background:white; box-shadow:0 1px 3px rgba(0,0,0,0.08); position:sticky; top:0; z-index:100; }
+.nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav-logo { font-size:1.3em; font-weight:700; color:var(--primary); text-decoration:none; display:flex; align-items:center; gap:8px; }
+.nav-links { display:flex; gap:32px; }
+.nav-links a { color:var(--text-light); text-decoration:none; font-size:0.95em; transition:color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color:var(--primary); }
+
+.container { max-width:1200px; margin:0 auto; padding:40px 24px 60px; }
+
+/* Hero */
+.hero { background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%); border-radius:20px; padding:48px 40px; margin-bottom:40px; color:white; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-50%; right:-10%; width:400px; height:400px; background:rgba(255,255,255,0.08); border-radius:50%; }
+.hero::after { content:''; position:absolute; bottom:-30%; left:-5%; width:300px; height:300px; background:rgba(255,255,255,0.05); border-radius:50%; }
+.hero-content { position:relative; z-index:1; }
+.hero-badge { display:inline-block; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:4px 16px; font-size:0.85em; margin-bottom:16px; backdrop-filter:blur(10px); }
+.hero h1 { font-size:2.4em; font-weight:800; margin-bottom:8px; }
+.hero-sub { font-size:1.1em; opacity:0.9; margin-bottom:24px; }
+.hero-meta { display:flex; gap:24px; flex-wrap:wrap; font-size:0.9em; opacity:0.85; }
+.hero-meta span { display:flex; align-items:center; gap:6px; }
+
+/* Section */
+.section { margin-bottom:40px; }
+.section-title { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:12px; border-bottom:2px solid var(--border); }
+.section-title .icon { font-size:1.4em; }
+.section-title h2 { font-size:1.3em; font-weight:700; color:var(--text); }
+.section-title .badge { margin-left:auto; background:var(--primary); color:white; border-radius:20px; padding:2px 12px; font-size:0.8em; }
+
+/* Grid */
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+
+/* Cards */
+.card { background:white; border-radius:16px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,0.06); border:1px solid var(--border); transition:box-shadow 0.2s, transform 0.2s; }
+.card:hover { box-shadow:0 4px 20px rgba(0,0,0,0.1); transform:translateY(-2px); }
+.card-title { font-size:1.05em; font-weight:700; margin-bottom:8px; color:var(--text); }
+.card-meta { font-size:0.82em; color:var(--text-light); margin-bottom:10px; display:flex; gap:12px; flex-wrap:wrap; }
+.card-tag { display:inline-block; padding:2px 8px; border-radius:6px; font-size:0.78em; font-weight:600; }
+.tag-red { background:#fef2f2; color:#ef4444; }
+.tag-blue { background:#eff6ff; color:#3b82f6; }
+.tag-green { background:#f0fdf4; color:#10b981; }
+.tag-orange { background:#fffbeb; color:#f59e0b; }
+.tag-purple { background:#f5f3ff; color:#8b5cf6; }
+.tag-pink { background:#fdf2f8; color:#ec4899; }
+.tag-cyan { background:#ecfeff; color:#06b6d4; }
+
+/* News item */
+.news-item { padding:16px 0; border-bottom:1px solid var(--border); }
+.news-item:last-child { border-bottom:none; padding-bottom:0; }
+.news-item:first-child { padding-top:0; }
+.news-item h3 { font-size:1em; font-weight:700; margin-bottom:6px; color:var(--text); }
+.news-item h3 a { color:inherit; text-decoration:none; }
+.news-item h3 a:hover { color:var(--primary); text-decoration:underline; }
+.news-item p { font-size:0.9em; color:var(--text-light); margin-bottom:6px; }
+.news-item .source { font-size:0.8em; color:var(--text-light); opacity:0.7; }
+.news-item .source a { color:var(--primary); text-decoration:none; }
+
+/* Priority card */
+.priority-card { background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%); border:1px solid #fcd34d; }
+.priority-card.blue { background:linear-gradient(135deg,#dbeafe 0%,#bfdbfe 100%); border-color:#93c5fd; }
+.priority-card.green { background:linear-gradient(135deg,#d1fae5 0%,#a7f3d0 100%); border-color:#6ee7b7; }
+.priority-card.pink { background:linear-gradient(135deg,#fce7f3 0%,#fbcfe8 100%); border-color:#f9a8d4; }
+.priority-card.purple { background:linear-gradient(135deg,#ede9fe 0%,#ddd6fe 100%); border-color:#c4b5fd; }
+.priority-card .card-title { font-size:1.1em; }
+
+/* Table */
+.data-table { width:100%; border-collapse:collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+.data-table th { background:var(--primary); color:white; padding:12px 16px; text-align:left; font-weight:600; font-size:0.9em; }
+.data-table td { padding:10px 16px; border-bottom:1px solid var(--border); font-size:0.9em; }
+.data-table tr:last-child td { border-bottom:none; }
+.data-table tr:hover td { background:#f8fafc; }
+
+/* Stars badge */
+.stars { display:inline-flex; align-items:center; gap:4px; background:#fff7ed; color:#ea580c; padding:2px 8px; border-radius:12px; font-size:0.8em; font-weight:600; }
+
+/* Callout */
+.callout { background:white; border-left:4px solid var(--primary); border-radius:0 12px 12px 0; padding:20px 24px; margin-bottom:32px; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+.callout-title { font-weight:700; font-size:1.05em; margin-bottom:8px; color:var(--primary); }
+.callout p { color:var(--text-light); font-size:0.9em; }
+
+/* Footer */
+footer { text-align:center; padding:32px 0; color:var(--text-light); font-size:0.85em; border-top:1px solid var(--border); margin-top:40px; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .grid-2 { grid-template-columns:1fr; }
+  .grid-3 { grid-template-columns:1fr; }
+  .hero { padding:32px 20px; }
+  .hero h1 { font-size:1.8em; }
+  .container { padding:24px 16px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width:8px; }
+::-webkit-scrollbar-track { background:#f1f5f9; }
+::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:#94a3b8; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">墨</a>
+    <div class="nav-links">
+      <a href="/">首页</a>
+      <a href="/news/" class="active">AI日报</a>
+      <a href="#">关于</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">📡 每日AI资讯 · 识墨出品</div>
+      <h1>识墨AI日报</h1>
+      <p class="hero-sub">2026年5月17日 · 星期日 · 覆盖40+条AI最新动态</p>
+      <div class="hero-meta">
+        <span>🔥 最热：OpenAI重组 + Claude Mythos攻破苹果M5</span>
+        <span>📊 来源：AITNT/新智元/IT之家等47+信息源</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今日要点 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">⭐</span>
+      <h2>今日要点 Top 8</h2>
+      <span class="badge">必读</span>
+    </div>
+    <div class="grid-2">
+      <div class="card priority-card">
+        <div class="card-meta"><span class="card-tag tag-red">⭐⭐⭐⭐⭐</span><span>新智元/WIRED</span></div>
+        <div class="card-title">OpenAI IPO前最大重组：ChatGPT/Codex/API三线合一</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">Greg Brockman正式接管产品战略，ChatGPT 9亿周活用户。Anthropic估值反超9000亿美元倒逼OpenAI整合求变，打造一站式"超级应用"。</p>
+      </div>
+      <div class="card priority-card blue">
+        <div class="card-meta"><span class="card-tag tag-blue">⭐⭐⭐⭐⭐</span><span>IT之家/WSJ</span></div>
+        <div class="card-title">Claude Mythos 5天攻破苹果M5芯片5年安全防线</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">安全公司Calif在真实M5 Mac上全程开启安全机制，从普通用户账户一路打穿到root shell。55页报告亲自送至库比蒂诺。CMU测试41个高危漏洞大幅领先GPT-5.5。</p>
+      </div>
+      <div class="card priority-card green">
+        <div class="card-meta"><span class="card-tag tag-green">⭐⭐⭐⭐⭐</span><span>TechCrunch</span></div>
+        <div class="card-title">ChatGPT正式上线个人理财：连接12000家银行账户</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">通过Plaid连接全美超12000家金融机构，用户数据可能默认用于模型训练引爆隐私争议。仅限美国Pro用户（月费200美元）。</p>
+      </div>
+      <div class="card priority-card pink">
+        <div class="card-meta"><span class="card-tag tag-pink">⭐⭐⭐⭐</span><span>新智元</span></div>
+        <div class="card-title">Codex AI首次完成"打工闭环"：22小时赚$16.88</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">开发者Chris仅下达"去GitHub赚5美元"模糊指令，Codex自主完成找活→干活→提交PR→收款全流程。AI首次接入真实经济系统，奥特曼预言成真。</p>
+      </div>
+      <div class="card priority-card purple">
+        <div class="card-meta"><span class="card-tag tag-purple">⭐⭐⭐⭐</span><span>ITBear/36Kr</span></div>
+        <div class="card-title">GPT-5.6内部代码曝光：下月发布，ultrafast快2-3倍</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">距GPT-5.5发布仅三周，GPT-5.6首批内部测试节点已启动验证。1.5M超长上下文已可跑通，ultrafast模式推理速度提升2-3倍。</p>
+      </div>
+      <div class="card priority-card">
+        <div class="card-meta"><span class="card-tag tag-orange">⭐⭐⭐⭐</span><span>IT之家/澎湃</span></div>
+        <div class="card-title">谷歌I/O明日开幕：Gemini Omni + Gemini Intelligence</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">5月19日主旨演讲，Gemini Omni全新视频生成模型+Gemini Intelligence AI品牌正式发布，Android 17全面AI化。</p>
+      </div>
+      <div class="card priority-card blue">
+        <div class="card-meta"><span class="card-tag tag-blue">⭐⭐⭐⭐</span><span>TAIFT</span></div>
+        <div class="card-title">Anthropic公开23个隐藏工具，Claude提示词长达4200词</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">Anthropic发布Claude 4.7时同步公开系统提示词，开发者Simon Willison分析发现23个此前未公开的隐藏工具，同时Claude人格副作用：频繁催用户睡觉。</p>
+      </div>
+      <div class="card priority-card green">
+        <div class="card-meta"><span class="card-tag tag-green">⭐⭐⭐⭐</span><span>人民网/新浪</span></div>
+        <div class="card-title">辽宁出台全国首个省域OPC政策：到2028年培育300家</div>
+        <p style="color:var(--text-light);font-size:0.9em;margin-top:8px;">辽宁省印发《人工智能OPC培育发展实施方案》，目标到2028年培育OPC企业300家、集聚人才超3000名、打造重点社区20个以上，单项落地最高奖3万元。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 大模型更新 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🤖</span>
+      <h2>一、大模型更新</h2>
+      <span class="badge">8条</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+      <div class="card" style="border-left:4px solid #ef4444;">
+        <div class="card-meta"><span class="card-tag tag-red">OpenAI</span><span class="card-tag tag-cyan">重组</span></div>
+        <div class="card-title">OpenAI IPO前最大规模重组：三大产品线合一</div>
+        <p>5月15日宣布将ChatGPT、Codex、API三大核心产品线合并为统一产品组织。联合创始人Greg Brockman正式全面接管产品战略，同时继续负责人工智能基础设施工作。ChatGPT目前拥有9亿周活跃用户。此举正值Anthropic估值反超达9000亿美元、IPO前夕的关键时刻，公司急需展示整合能力以提振资本市场信心。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://finance.sina.com.cn/wm/2026-05-16/doc-inhyankn5745663.shtml" target="_blank">新浪财经</a> · <a href="https://tech.ifeng.com/c/8tAEimhqBuB" target="_blank">凤凰科技</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #ec4899;">
+        <div class="card-meta"><span class="card-tag tag-pink">Anthropic</span><span class="card-tag tag-cyan">安全</span></div>
+        <div class="card-title">Claude Mythos：5天攻破苹果M5芯片5年安全防线</div>
+        <p>安全公司Calif调用Claude Mythos Preview，对真实M5 Mac展开攻击——从普通用户账户起步，结合2个漏洞，全程开启所有安全机制，5天拿到root shell。苹果这道防线花了5年、数十亿美元打造。研究人员将55页报告打印出来，亲自飞往库比蒂诺当面交给苹果。CMU测试：Claude Mythos在41个真实浏览器高危漏洞破解中远超GPT-5.5，甚至破解了人类安全专家一年未解的CVE漏洞。成本约为GPT-5.5的12倍。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.ithome.com/0/950/676.htm" target="_blank">IT之家</a> · <a href="https://www.sohu.com/a/1023452268_122189055" target="_blank">搜狐</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #3b82f6;">
+        <div class="card-meta"><span class="card-tag tag-blue">OpenAI</span><span class="card-tag tag-orange">模型</span></div>
+        <div class="card-title">GPT-5.6内部代码曝光：下月发布，ultrafast提速2-3倍</div>
+        <p>距GPT-5.5发布仅三周，GPT-5.6已被全面曝光。知名爆料人Leo透露，首批内部测试节点已在过去几天启动验证，内部Codex日志发现rollout mapping痕迹指向GPT-5.6。部分ChatGPT Pro用户通过OAuth认证已成功调用gpt-5.6模型，1.5M超长上下文窗口已可跑通。ultrafast模式推理速度预计提升2-3倍。预计下个月（6月）正式发布。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.itbear.com.cn/html/2026-05/1339410.html" target="_blank">ITBear</a> · <a href="https://www.36kr.com/p/3808515686309377" target="_blank">36Kr</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #10b981;">
+        <div class="card-meta"><span class="card-tag tag-green">Anthropic</span><span class="card-tag tag-cyan">融资</span></div>
+        <div class="card-title">Anthropic洽谈300亿美元融资，估值直逼万亿美元</div>
+        <p>据《华尔街日报》和每日经济新闻报道，Anthropic正洽谈新一轮融资，计划募资至少300亿美元，投前估值突破9000亿美元，直逼万亿美元关口。若融资落地将超越OpenAI最新8520亿美元估值。谷歌、亚马逊已大手笔布局。ARR（年化收入）已超440亿美元，12个月新增350亿美元，两个月翻倍。企业市占率34.4%首超OpenAI的32.3%。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.nbd.com.cn/articles/2026-05-13/4389849.html" target="_blank">每日经济新闻</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #f59e0b;">
+        <div class="card-meta"><span class="card-tag tag-orange">Google</span><span class="card-tag tag-purple">I/O</span></div>
+        <div class="card-title">谷歌I/O 2026明日开幕：Gemini Omni + Gemini Intelligence</div>
+        <p>5月19日主旨演讲，谷歌将发布Gemini Omni全新视频生成模型——超写实视频+实时编辑，将与Sora、Runway、Pika、可灵AI正面竞争。同时推出Gemini Intelligence品牌（对标Apple Intelligence），Android 17全面AI化。Android XR智能眼镜有望从概念走向产品。Gemini 3.2正式版已推送。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.ithome.com/0/939/305.htm" target="_blank">IT之家</a> · <a href="https://m.thepaper.cn/newsDetail_forward_33072365" target="_blank">澎湃</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #8b5cf6;">
+        <div class="card-meta"><span class="card-tag tag-purple">百度</span><span class="card-tag tag-cyan">国产</span></div>
+        <div class="card-title">百度文心大模型5.1：预训练成本仅同规模模型的6%</div>
+        <p>百度发布"多维弹性预训练"技术，仅以业界同规模模型约6%的预训练成本实现基础效果领先。LMArena搜索榜国内第一、全球第四，搜索能力位居国内首位。该技术实现了一次训练生成多种规模模型，大幅压缩参数量同时保持能力领先。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.ithome.com/0/948/079.htm" target="_blank">IT之家</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #06b6d4;">
+        <div class="card-meta"><span class="card-tag tag-cyan">DeepSeek</span><span class="card-tag tag-green">开源</span></div>
+        <div class="card-title">DeepSeek V4系列发布：标配百万上下文</div>
+        <p>V4/V4-Pro于4月24日正式发布并开源，标配百万上下文窗口。deepseek-chat和deepseek-reasoner将于2026年7月24日停用。首轮融资传闻：国家大基金领投，估值450-500亿美元，梁文锋个人出资200亿元，创中国AI企业史上最大单笔融资纪录。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.36kr.com/p/3780290045121801" target="_blank">36Kr</a></div>
+      </div>
+      <div class="card" style="border-left:4px solid #ec4899;">
+        <div class="card-meta"><span class="card-tag tag-pink">国产</span><span class="card-tag tag-cyan">融资</span></div>
+        <div class="card-title">Kimi完成136亿元D轮融资，阶跃星辰冲刺港股IPO</div>
+        <p>月之暗面（Kimi）完成约136亿元D轮融资，创中国大模型单笔融资最高纪录，投后估值突破200亿美元（约1400亿元）。美团龙珠领投，中国移动、CPE源峰等跟投。阶跃星辰完成近25亿美元融资，腾讯云签署战略合作，拆除红筹架构冲刺港股IPO。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://news.qq.com/rain/a/20260507A055G300" target="_blank">腾讯新闻</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 热门AI系统/产品 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">⚡</span>
+      <h2>二、热门AI系统与产品</h2>
+      <span class="badge">8条</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-blue">ChatGPT</span><span class="card-tag tag-red">隐私</span></div>
+        <div class="card-title">ChatGPT正式上线个人理财：连接12000家银行账户，数据隐私引爆争议</div>
+        <p>5月16日凌晨，OpenAI正式在ChatGPT中上线「个人理财(ChatGPT for Personal Finance)」功能。通过Plaid安全连接金融账户，覆盖Schwab、Fidelity、Chase、Robinhood等超12000家机构，用户可连接银行账户、信用卡、券商账户，AI分析消费流向并提供个性化理财建议。争议焦点：用户数据可能默认用于模型训练，构成事实上的"个人完整财务画像"，引发巨大隐私争议。仅限美国ChatGPT Pro用户（月费200美元），先小范围测试再谨慎扩展。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://zhuanlan.zhihu.com/p/2038895546904076909" target="_blank">知乎</a> · <a href="https://baijiahao.baidu.com/s?id=1865373742332203769" target="_blank">百家号</a></div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-purple">Codex</span><span class="card-tag tag-orange">打工</span></div>
+        <div class="card-title">Codex AI自主"打工闭环"完成：22小时赚$16.88，AI首次接入真实经济系统</div>
+        <p>开发者Chris在X发帖：仅下达"去GitHub赚5美元"的模糊指令，Codex跑了22小时，自主完成寻找开源赏金任务→提交代码修复漏洞→跟进维护者→收款的全流程，最终带回16.88美元赏金。人类几乎没有介入。奥特曼此前预言"AI替人类赚钱"成真第一步，Chris帖子一天超百万浏览。后续已有开发者用同样方法躺赚200美元。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://finance.sina.com.cn/stock/t/2026-05-12/doc-inhxrshh1515270.shtml" target="_blank">新浪财经</a> · <a href="https://www.51cto.com/article/843044.html" target="_blank">51CTO</a></div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-green">Claude</span><span class="card-tag tag-pink">系统提示</span></div>
+        <div class="card-title">Anthropic公开23个隐藏工具，Claude人格副作用：频繁催用户睡觉</div>
+        <p>Anthropic发布Claude 4.7时同步公开了系统提示词，开发者Simon Willison深度分析发现23个从未公开的隐藏工具，提示词总长度达4200词，涉及能力、安全等多方面调整。副作用：由于复杂的人格塑造系统，Claude不分场合频繁催促用户休息，引发业界对AI拟人化边界的讨论。</p>
+        <div class="source" style="margin-top:10px;">来源：TAIFT / AITNT News</div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-orange">OpenAI</span><span class="card-tag tag-purple">秘密收购</span></div>
+        <div class="card-title">OpenAI 2021年秘密收购声音克隆公司Weights.gg，提前布局拟人语音</div>
+        <p>媒体揭露OpenAI于2021年秘密收购AI声音克隆技术公司Weights.gg，核心技术为AI声音克隆。这是OpenAI为未来拟人化语音助手项目提前5年的布局，收购完成后持续保密直至近期曝光，揭示了OpenAI在语音交互领域的长期战略意图。</p>
+        <div class="source" style="margin-top:10px;">来源：AI内参</div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-blue">AI编程</span><span class="card-tag tag-green">开源</span></div>
+        <div class="card-title">Claude Code论文全流程开源：6,400+星，处理万字论文仅需$4-6</div>
+        <p>Edward Cheng-I Wu在GitHub开源了academic-research-skills项目，基于Claude Code实现论文写作完整流水线，覆盖研究→写作→审稿→定稿全流程。全程处理1.5万字论文约花费4-6美元，为学术写作提供高效低价解决方案。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://github.com/Imbad0202/academic-research-skills" target="_blank">GitHub</a> · AITNT News</div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-cyan">AI视频</span><span class="card-tag tag-blue">出海</span></div>
+        <div class="card-title">Sensor Tower榜单：AI Catch位列全球AI图像视频应用双榜前十</div>
+        <p>5月14日，Sensor Tower发布《2026年全球AI应用趋势洞察》报告，小影科技旗下AI视频应用AI Catch位列全球收入榜和下载榜前十，中国厂商出海表现亮眼。Gemini Omni发布在即，将与Sora、Runway、Pika、可灵AI展开正面竞争。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://tech.ifeng.com/c/8t7eymM5sfJ" target="_blank">凤凰科技</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI自动化/效率工具 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🔧</span>
+      <h2>三、AI自动化与效率工具</h2>
+      <span class="badge">5条</span>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-orange">行业趋势</span></div>
+        <div class="card-title">AI竞争焦点转向"智能密度×Token吞吐量"</div>
+        <p>行业竞争逻辑从"算力军备竞赛"转向"效率比拼"。新竞争公式：智能密度 × Token吞吐量。MiniMax通过架构创新构建成本优势，中国AI厂商在效率维度形成差异化竞争路径。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-blue">美团</span></div>
+        <div class="card-title">美团AI社区"觅游"：3000+ Agent入驻</div>
+        <p>Q1算力消耗增长316%，登顶全球26个国家应用商店。入驻Agent超3000个，为用户提供多样化AI服务生态。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-purple">Skills</span></div>
+        <div class="card-title">GitHub Skills项目爆发式增长</div>
+        <p>mattpocock/skills: 86,751星（今日冠军）; addyosdoski/agent-skills: 42,478星; K-Dense-AI/scientific-agent-skills: 23,082星。Skill类项目大量涌现，Claude Code生态工具占据多个席位。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-green">Agent</span></div>
+        <div class="card-title">Agent记忆方案成新热点</div>
+        <p>rohitg00/agentmemory: 10,266星（AI编码代理持久记忆方案第一）; Tencent/TencentDB-Agent-Memory: 2,310星（腾讯出品完全本地长期记忆）。Agent持久记忆方向热度持续上升。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-cyan">Rust</span></div>
+        <div class="card-title">Rust语言AI项目表现突出</div>
+        <p>tinyhumansai/openhuman: 10,603星（个人AI超级智能）; farion1231/cc-switch: 72,617星（All-in-One桌面助手）; Hmbown/DeepSeek-TUI: 30,486星（终端编码代理）。Rust正在成为AI基础设施首选语言。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPC一人公司 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">🏢</span>
+      <h2>四、OPC一人公司案例</h2>
+      <span class="badge">4条</span>
+    </div>
+    <div class="grid-2">
+      <div class="card" style="border-left:4px solid #10b981;">
+        <div class="card-meta"><span class="card-tag tag-green">政策</span></div>
+        <div class="card-title">辽宁出台全国首个省域OPC培育方案：到2028年培育300家</div>
+        <p>辽宁省政府5月12日召开新闻发布会，印发《辽宁省人工智能OPC培育发展实施方案（2026-2028年）》。核心目标：到2028年培育OPC企业300家、集聚OPC人才超3000名、打造重点OPC社区20个以上。单项落地最高奖励3万元。8项重点任务：专业化OPC社区+招引+基础支撑+应用场景开放+梯度培育+人才培养+创新生态+政务服务优化。辽宁省成为全国首个出台省级OPC专项政策的省份。</p>
+        <div class="source" style="margin-top:10px;">来源：<a href="https://www.ln.gov.cn/web/ywdt/zymtkln/2026051409102930327/index.shtml" target="_blank">人民网</a> · <a href="https://finance.sina.com.cn/jjxw/2026-05-13/doc-inhxsxzx4735369.shtml" target="_blank">新浪财经</a></div>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-blue">教育</span></div>
+        <div class="card-title">三位00后向母校捐20亿阿里国际Token，助力学弟学妹AI创业</div>
+        <p>三位00后外贸创业者向郑州西亚斯学院捐赠20亿阿里国际Accio Work Token，供近500名学生体验AI工具，帮助学弟学妹快速开展AI一人公司创业。此举彰显了AI OPC模式在年轻创业者中的影响力。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-orange">GenZ</span></div>
+        <div class="card-title">Business Insider盘点16个GenZ AI创业团队</div>
+        <p>16-24岁Z世代创立，多为名校在读生或辍学者，已获百万级融资。覆盖社交、生活、学习、行业服务等垂直赛道，代表了AI时代年轻人创业的新趋势。</p>
+      </div>
+      <div class="card">
+        <div class="card-meta"><span class="card-tag tag-pink">融资</span></div>
+        <div class="card-title">前小米高管王腾创立AI睡眠健康公司"今日宜休"获融资</div>
+        <p>前小米高管王腾创办AI睡眠健康公司"今日宜休"完成新一轮融资，引入CMC资本、弘晖基金等新投资方，老股东高瓴创投超额追投。资金用于团队搭建、产品研发及商业化，致力于用AI提供全天候睡眠与精力管理服务。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GitHub热门项目 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">⭐</span>
+      <h2>五、GitHub热门AI开源项目 Top 10</h2>
+      <span class="badge">2026-05-17</span>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width:50px;">排名</th>
+          <th>项目名</th>
+          <th>描述</th>
+          <th style="width:70px;">语言</th>
+          <th style="width:100px;">总星数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color:#ef4444;">🥇1</strong></td>
+          <td><a href="https://github.com/mattpocock/skills" target="_blank">mattpocock/skills</a></td>
+          <td>为真实工程师提供技能集，来自.claude目录</td>
+          <td>Shell</td>
+          <td><span class="stars">86,751</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#3b82f6;">🥈2</strong></td>
+          <td><a href="https://github.com/tinyhumansai/openhuman" target="_blank">tinyhumansai/openhuman</a></td>
+          <td>个人AI超级智能，私密、简单且极其强大</td>
+          <td>Rust</td>
+          <td><span class="stars">10,603</span></td>
+        </tr>
+        <tr>
+          <td><strong style="color:#f59e0b;">🥉3</strong></td>
+          <td><a href="https://github.com/CloakHQ/CloakBrowser" target="_blank">CloakHQ/CloakBrowser</a></td>
+          <td>隐身Chromium，Playwright替代品，可通过所有机器人检测</td>
+          <td>Python</td>
+          <td><span class="stars">12,567</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><a href="https://github.com/farion1231/cc-switch" target="_blank">farion1231/cc-switch</a></td>
+          <td>跨平台桌面All-in-One助手，支持Claude Code/Codex/OpenCode</td>
+          <td>Rust</td>
+          <td><span class="stars">72,617</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><a href="https://github.com/anthropics/financial-services" target="_blank">anthropics/financial-services</a></td>
+          <td>Anthropic官方金融服务Claude插件集，覆盖五大金融垂直方向</td>
+          <td>Python</td>
+          <td><span class="stars">23,778</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><a href="https://github.com/Hmbown/DeepSeek-TUI" target="_blank">Hmbown/DeepSeek-TUI</a></td>
+          <td>在终端运行的DeepSeek模型编码代理</td>
+          <td>Rust</td>
+          <td><span class="stars">30,486</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><a href="https://github.com/jackwener/OpenCLI" target="_blank">jackwener/OpenCLI</a></td>
+          <td>将任意网站和工具转为CLI，通用CLI Hub与AI原生运行时</td>
+          <td>JavaScript</td>
+          <td><span class="stars">21,221</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><a href="https://github.com/rohitg00/agentmemory" target="_blank">rohitg00/agentmemory</a></td>
+          <td>AI编码代理持久记忆方案 #1，基于真实基准测试</td>
+          <td>TypeScript</td>
+          <td><span class="stars">10,266</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><a href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank">K-Dense-AI/scientific-agent-skills</a></td>
+          <td>面向科研/工程/分析的即用型Agent技能集</td>
+          <td>Python</td>
+          <td><span class="stars">23,082</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><a href="https://github.com/addyosdoski/agent-skills" target="_blank">addyosdoski/agent-skills</a></td>
+          <td>面向AI编码代理的生产级工程技能</td>
+          <td>Shell</td>
+          <td><span class="stars">42,478</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:16px;padding:16px;background:white;border-radius:12px;border:1px solid var(--border);">
+      <strong style="font-size:0.95em;">📊 趋势洞察：</strong>
+      <ul style="margin-top:8px;padding-left:20px;color:var(--text-light);font-size:0.88em;">
+        <li>🔥 <strong>Skill类项目</strong>大量涌现，Claude Code生态工具占据多个席位</li>
+        <li>🦀 <strong>Rust语言</strong>项目表现突出（openhuman、cc-switch、DeepSeek-TUI、coral）</li>
+        <li>🤖 <strong>Agent记忆</strong>方向热度上升（agentmemory、TencentDB-Agent-Memory）</li>
+        <li>💰 <strong>金融AI</strong>方向受关注（anthropics/financial-services）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 行业动态 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">📊</span>
+      <h2>六、行业动态</h2>
+      <span class="badge">8条</span>
+    </div>
+    <div class="card">
+      <div class="news-item">
+        <h3>🏭 2026杭州国际具身机器人场景应用大赛落幕：200+队伍参赛</h3>
+        <p>5月15-16日，为期两天的2026杭州国际具身机器人场景应用大赛在云栖小镇落幕。200+支赛展队伍齐聚（来自瑞士、俄罗斯、印度等海外团队），设置三大分赛：专业测试赛 + 应用场景挑战赛 + 创业创投赛。赛场聚焦真实场景：机器狗跨碎石路救援"伤员"、机械臂精准抓取物品、水下机器人潜入湖底。企业需求活跃："有10条生产线，能否做24小时自动化？"大赛以场景为磨刀石，以应用为试金石，加速具身智能技术落地。</p>
+        <div class="source">来源：<a href="https://finance.sina.com.cn/roll/2026-05-17/doc-inhyekzt3798870.shtml" target="_blank">新浪财经</a> · <a href="https://www.chinanews.com.cn/sh/shipin/cns-d/2026/05/15/news1054364.shtml" target="_blank">中新社</a></div>
+      </div>
+      <div class="news-item">
+        <h3>📈 2026年AI竞争焦点：智能密度×Token吞吐量，中国厂商效率突围</h3>
+        <p>行业竞争逻辑发生重大转变：从"算力军备竞赛"转向"效率比拼"。新竞争公式：智能密度 × Token吞吐量。代表企业MiniMax通过架构创新构建成本优势，在效率维度形成差异化竞争路径。这标志着AI行业从单纯堆参数转向真实商业价值创造。</p>
+        <div class="source">来源：AI内参</div>
+      </div>
+      <div class="news-item">
+        <h3>🎓 AI教育新范式：00后创业者向母校捐20亿Token推动OPC普及</h3>
+        <p>三位00后外贸创业者向郑州西亚斯学院捐赠20亿阿里国际Accio Work Token，供近500名学生体验AI工具，帮助学弟学妹快速开展AI一人公司创业。此举将AI OPC理念直接带入校园，加速AI创业教育普及。</p>
+        <div class="source">来源：AITNT News</div>
+      </div>
+      <div class="news-item">
+        <h3>📰 OpenAI内部震荡：高管离职潮 + Anthropic估值反超倒逼重组</h3>
+        <p>在IPO前夕，OpenAI正经历高管离职潮冲击，加上Anthropic估值已反超达9000亿美元（逼近万亿）的外部压力，迫使公司进行"三线合一"重组来应对挑战。内部动荡与外部竞争双重压力下，OpenAI正在加速向"超级应用"转型。</p>
+        <div class="source">来源：新智元</div>
+      </div>
+      <div class="news-item">
+        <h3>🔬 ICLR 2026：中国团队发布8B参数生物实验protocol生成模型Thoth</h3>
+        <p>上海AI实验室、复旦大学、上海交通大学联合团队推出8B参数生物实验protocol生成模型Thoth，论文发表于ICLR 2026。在多个评测指标上取得SOTA，性能超越ChatGPT-4o和DeepSeek-V3。能生成步骤顺序正确、剂量准确的可执行生物实验方案，展现了小参数模型在专业领域的潜力。</p>
+        <div class="source">来源：Thoth团队 / AITNT News</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据亮点 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="icon">📈</span>
+      <h2>七、今日关键数据一览</h2>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>数据项</th>
+          <th>数值</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ChatGPT周活跃用户</td><td><strong style="color:#ef4444;">9亿</strong></td><td>全球第一AI产品</td></tr>
+        <tr><td>Claude Mythos攻破苹果M5</td><td><strong style="color:#ef4444;">5天</strong></td><td>打破5年安全防线</td></tr>
+        <tr><td>Codex"打工"首次经济闭环</td><td><strong style="color:#f59e0b;">$16.88</strong></td><td>AI首次自主赚钱</td></tr>
+        <tr><td>Anthropic最新估值</td><td><strong style="color:#8b5cf6;">9000亿美元</strong></td><td>逼近万亿美元</td></tr>
+        <tr><td>Anthropic ARR</td><td><strong style="color:#8b5cf6;">440亿美元</strong></td><td>两个月翻倍</td></tr>
+        <tr><td>Kimi最新估值</td><td><strong style="color:#3b82f6;">200亿美元</strong></td><td>约1400亿元</td></tr>
+        <tr><td>文心5.1预训练成本</td><td><strong style="color:#10b981;">同规模6%</strong></td><td>性价比极高</td></tr>
+        <tr><td>辽宁OPC企业目标</td><td><strong style="color:#10b981;">300家</strong></td><td>到2028年</td></tr>
+        <tr><td>杭州具身机器人大赛队伍</td><td><strong style="color:#06b6d4;">200+支</strong></td><td>中外参赛</td></tr>
+        <tr><td>GitHub今日冠军</td><td><strong style="color:#ec4899;">86,751星</strong></td><td>mattpocock/skills</td></tr>
+        <tr><td>DeepSeek-TUI Stars</td><td><strong style="color:#f59e0b;">30,486星</strong></td><td>终端DeepSeek代理</td></tr>
+        <tr><td>Claude人格提示词长度</td><td><strong style="color:#3b82f6;">4200词</strong></td><td>23个隐藏工具</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 主编手记 -->
+  <div class="callout">
+    <div class="callout-title">📌 主编手记</div>
+    <p>今日AI产业最大看点在于OpenAI与Anthropic的"双线对决"——OpenAI面临IPO压力被迫重组，Anthropic则在估值和产品能力上全面反超。Claude Mythos攻破苹果M5芯片安全防线的案例深刻揭示了AI安全能力的飞速进步，也预示着"AI-vs-AI"对抗时代的正式到来。Codex首次完成打工闭环则标志着AI从"被动工具"到"主动员工"的历史性转变。明日谷歌I/O大会将成为本周最后一个重磅看点，Gemini Omni视频模型与Gemini Intelligence的发布值得密切关注。</p>
+  </div>
+
+  <!-- 数据来源 -->
+  <div class="section" style="margin-top:32px;">
+    <div class="section-title">
+      <span class="icon">🔗</span>
+      <h2>数据来源</h2>
+    </div>
+    <div style="background:white;border-radius:12px;padding:20px 24px;border:1px solid var(--border);font-size:0.88em;color:var(--text-light);line-height:2;">
+      IT之家 / ITBear / IT之家 · 新智元 / 36氪 / 知乎 · 新浪财经 / 腾讯新闻 / 凤凰科技 · 每日经济新闻 / 经济观察报 / 中新社 · 人民网 / 东北新闻网 / 华尔街日报 · TechCrunch / Engadget / Sensor Tower · AITNT News / AI内参 / GitHub Trending · Business Insider / Y Combinator · 澎湃新闻
+    </div>
+  </div>
+
+  <footer>
+    <p>「识墨AI日报」由识墨AI资讯专家出品 · 覆盖47+信息源 · 每日更新</p>
+    <p style="margin-top:4px;">cehua2000.github.io · AI新闻日报存档</p>
+  </footer>
+</div>
+
+</body>
+</html>
