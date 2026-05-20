@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>识墨AI日报 | 2026年5月20日</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #12122a;
+            --bg-card: #1a1a3e;
+            --bg-card-hover: #222255;
+            --accent: #7c5cfc;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(124, 92, 252, 0.3);
+            --gold: #fbbf24;
+            --gold-dark: #d97706;
+            --text-primary: #f0f0ff;
+            --text-secondary: #b0b0d0;
+            --text-muted: #7070a0;
+            --red: #ef4444;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --border: #2a2a5a;
+            --gradient-1: linear-gradient(135deg, #7c5cfc, #a78bfa);
+            --gradient-2: linear-gradient(135deg, #fbbf24, #f59e0b);
+            --gradient-3: linear-gradient(135deg, #3b82f6, #06b6d4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
+
+        .header {
+            text-align: center; padding: 48px 20px 36px;
+            background: linear-gradient(180deg, #1a0a3a 0%, var(--bg-primary) 100%);
+            border-radius: 20px; margin-bottom: 32px; position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(124,92,252,0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+        .header .badge {
+            display: inline-block; background: var(--gradient-1); color: #fff;
+            padding: 6px 20px; border-radius: 50px; font-size: 14px; font-weight: 600;
+            letter-spacing: 1px; margin-bottom: 16px; position: relative;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; position: relative; }
+        .header h1 .highlight { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header .subtitle { color: var(--text-secondary); font-size: 1em; position: relative; }
+        .header .stats { display: flex; justify-content: center; gap: 32px; margin-top: 20px; position: relative; flex-wrap: wrap; }
+        .header .stat-item { text-align: center; }
+        .header .stat-num { font-size: 1.8em; font-weight: 800; }
+        .header .stat-label { font-size: 0.8em; color: var(--text-muted); }
+
+        /* Sections */
+        .section { margin-bottom: 36px; }
+        .section-title {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+            padding-bottom: 12px; border-bottom: 1px solid var(--border);
+        }
+        .section-icon {
+            width: 40px; height: 40px; border-radius: 12px; display: flex;
+            align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+        }
+        .section-title h2 { font-size: 1.3em; font-weight: 700; }
+        .section-title .count {
+            margin-left: auto; background: var(--bg-card); padding: 4px 12px;
+            border-radius: 20px; font-size: 0.8em; color: var(--text-muted);
+        }
+
+        /* Highlight / Key Points */
+        .highlights { background: linear-gradient(135deg, #1a0a3a, #0d1b3e); border-radius: 16px; padding: 28px; margin-bottom: 36px; border: 1px solid var(--border); }
+        .highlights h2 { font-size: 1.4em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .highlight-list { list-style: none; }
+        .highlight-list li {
+            padding: 12px 16px; margin-bottom: 8px; border-radius: 10px;
+            background: rgba(124,92,252,0.06); border-left: 3px solid var(--accent);
+            transition: background 0.2s;
+        }
+        .highlight-list li:hover { background: rgba(124,92,252,0.12); }
+        .highlight-list li strong { color: var(--gold); }
+        .highlight-num { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; background: var(--gradient-1); border-radius: 6px; font-size: 12px; font-weight: 700; margin-right: 10px; }
+
+        /* News Cards */
+        .news-card {
+            background: var(--bg-card); border-radius: 14px; padding: 24px;
+            margin-bottom: 16px; border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .news-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .news-card .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+        .news-card .card-tag {
+            padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+            white-space: nowrap; flex-shrink: 0; margin-top: 3px;
+        }
+        .tag-openai { background: rgba(16,185,129,0.15); color: #10b981; }
+        .tag-anthropic { background: rgba(217,119,6,0.15); color: #d97706; }
+        .tag-google { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .tag-deepseek { background: rgba(99,102,241,0.15); color: #6366f1; }
+        .tag-domestic { background: rgba(236,72,153,0.15); color: #ec4899; }
+        .tag-product { background: rgba(6,182,212,0.15); color: #06b6d4; }
+        .tag-opc { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .tag-opensource { background: rgba(168,85,247,0.15); color: #a855f7; }
+        .tag-industry { background: rgba(249,115,22,0.15); color: #f97316; }
+        .tag-policy { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .news-card h3 { font-size: 1.1em; font-weight: 700; line-height: 1.5; }
+        .news-card .description { color: var(--text-secondary); font-size: 0.95em; margin-bottom: 12px; line-height: 1.8; }
+        .news-card .meta { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+        .news-card .meta span { font-size: 0.8em; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+        .news-card .source-link { color: var(--accent-light); text-decoration: none; font-size: 0.85em; }
+        .news-card .source-link:hover { text-decoration: underline; }
+        .news-card .data-highlight {
+            background: rgba(251,191,36,0.08); padding: 10px 14px; border-radius: 8px;
+            margin: 10px 0; border-left: 3px solid var(--gold); font-size: 0.9em;
+        }
+        .data-highlight strong { color: var(--gold); }
+
+        /* GitHub Table */
+        .gh-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+        .gh-table th { text-align: left; padding: 12px 16px; background: var(--bg-secondary); border-bottom: 2px solid var(--accent); color: var(--accent-light); font-weight: 600; }
+        .gh-table td { padding: 10px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        .gh-table tr:hover { background: rgba(124,92,252,0.05); }
+        .gh-table .stars { color: var(--gold); font-weight: 700; }
+        .gh-table .new-stars { color: var(--green); font-weight: 600; }
+        .gh-table .lang { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.85em; font-weight: 600; }
+        .lang-rust { background: rgba(222,98,42,0.15); color: #de622a; }
+        .lang-python { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        .lang-ts { background: rgba(6,182,212,0.15); color: #06b6d4; }
+        .lang-shell { background: rgba(34,197,94,0.15); color: #22c55e; }
+
+        /* Responsive */
+        .mobile-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 1.6em; }
+            .header .stats { gap: 16px; }
+            .header .stat-num { font-size: 1.4em; }
+            .news-card { padding: 18px; }
+            .gh-table { font-size: 0.8em; }
+            .gh-table th, .gh-table td { padding: 8px 10px; }
+        }
+
+        footer { background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 32px 16px; text-align: center; margin-top: 40px; border-radius: 16px; }
+        footer p { color: var(--text-muted); font-size: 0.85em; }
+        footer a { color: var(--accent-light); text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="badge">DAILY AI NEWS</div>
+        <h1><span class="highlight">识墨AI日报</span></h1>
+        <p class="subtitle">2026年5月20日 &middot; 星期三 &middot; 农历四月廿三</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-num" style="color:var(--gold)">30+</div>
+                <div class="stat-label">新闻条目</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" style="color:var(--green)">15</div>
+                <div class="stat-label">GitHub热榜</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num" style="color:var(--blue)">6</div>
+                <div class="stat-label">大类覆盖</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Today's Highlights -->
+    <div class="highlights">
+        <h2>&#x1F4E2; 今日要点</h2>
+        <ul class="highlight-list">
+            <li><span class="highlight-num">1</span><strong>Google I/O 2026 炸弹级发布</strong>：Gemini 3.5 Flash 上线，速度4倍、成本仅1/3；Gemini Omni 全模态视频模型震撼演示；AI Agent "Spark" 7x24小时私人管家登场；Antigravity 2.0 平台日处理3万亿token</li>
+            <li><span class="highlight-num">2</span><strong>Karpathy 官宣加入 Anthropic</strong>：OpenAI联合创始人、前特斯拉AI总监投奔Anthropic预训练团队，组建新团队用Claude加速预训练，AI人才战争白热化</li>
+            <li><span class="highlight-num">3</span><strong>Anthropic 2.8亿欧元收购Stainless</strong>：掐断OpenAI和谷歌的SDK工具链，"供应链战争"升级，API生态成新战场</li>
+            <li><span class="highlight-num">4</span><strong>可灵AI拟独立融资200亿美元</strong>：快手分拆视频大模型业务，ARR达5亿美元翻倍增长，预计明年Q1启动IPO，全球估值最高AI视频厂商之一</li>
+            <li><span class="highlight-num">5</span><strong>Grok Build发布</strong>：马斯克xAI首款编程智能体上线，直接狙击Claude Code，AI编程工具赛道再添猛将</li>
+            <li><span class="highlight-num">6</span><strong>北京朝阳区加码AI+OPC政策</strong>：打造超级个体网络化协同新生态，全国多个城市密集出台一人公司扶持政策</li>
+            <li><span class="highlight-num">7</span><strong>中国大模型周调用量连续三周超越美国</strong>：上周中国AI大模型调用量7.693万亿Token，美国4.24万亿，全球占比近30%</li>
+            <li><span class="highlight-num">8</span><strong>谷歌发布第八代TPU</strong>：训练专用TPU v8o+推理专用TPU v8i双芯片架构，2026年资本支出1800-1900亿美元，训练周期"几周而非几个月"</li>
+        </ul>
+    </div>
+
+    <!-- A. 大模型更新 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:var(--gradient-1)">&#x1F916;</div>
+            <h2>A. 大模型更新</h2>
+            <span class="count">8条</span>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>Gemini 3.5 Flash 正式上线：速度4倍、成本仅1/3，"游戏规则改变者"</h3>
+            </div>
+            <div class="description">
+                谷歌在I/O 2026上发布新一代高速模型Gemini 3.5 Flash，CEO皮查伊称其为"游戏规则改变者"。该模型整体表现全面超越4-5个月前的旗舰Gemini 3.1 Pro，性能达到前沿模型约90%，速度比同类前沿模型快4倍（在Antigravity平台可达12倍），成本仅为同类前沿模型的1/3到1/2。Terminal-Bench 2.1得分76.2%，MCP Atlas 83.6%。皮查伊举例称：谷歌头部客户每天处理约1万亿token，将80%工作负载切换至Flash后，每年可节省超10亿美元。已即时上线，成为Gemini App和AI搜索的默认模型。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：速度4-12倍 | 成本降至1/3~1/2 | Terminal-Bench 76.2% | 年省超10亿美元
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F310; Google I/O 2026</span>
+                <a href="https://finance.sina.com.cn/roll/2026-05-20/doc-inhynvwv7087579.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+                <a href="https://www.nbd.com.cn/articles/2026-05-20/4400121.html" class="source-link" target="_blank">&#x1F517; 每日经济新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>Gemini Omni：谷歌首个原生全模态世界模型，对话式视频编辑革命</h3>
+            </div>
+            <div class="description">
+                谷歌发布Gemini Omni——第一个真正的原生多模态模型，支持文本、图像、音频、视频的任意组合输入与输出，所有处理在单一统一模型内完成。演示中震撼展示了：上传骑行视频后"换成雪地背景"保持人物动作不变，继续"改成侧面跟拍角度"自动调整摄像机，再"加旁白解释路线"自动生成配乐与解说——全程在同一对话线程内完成。物理效果（重力、动能、流体力学）大幅提升。即日向美国Gemini付费用户开放，未来几周通过Vertex AI API开放开发者。所有内容附带SynthID数字水印+C2PA凭证。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F3AC; 全模态视频模型</span>
+                <a href="https://www.msn.cn/zh-cn/news/other/google-io-2026" class="source-link" target="_blank">&#x1F517; CNMO</a>
+                <a href="https://tech.ifeng.com/c/8tGyHTRsNH5" class="source-link" target="_blank">&#x1F517; 凤凰科技</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>Gemini Spark：7x24小时AI私人管家，Agent时代正式到来</h3>
+            </div>
+            <div class="description">
+                谷歌发布Gemini Spark，一款7x24小时运行的私人AI管家。运行于谷歌云专用虚拟机，即使用户关闭设备仍可在后台持续工作。深度集成Gmail、文档、表格、幻灯片等全家桶，可策划派对、跟踪日程、监控收件箱。推出智能体支付协议：可设置批准品牌、消费上限、限定商家。今年夏天通过Chrome浏览器操作更多第三方应用和网站。下周向美国Google AI Ultra订阅用户推出测试版。皮查伊表示："最前沿的Agent可能只触达过世界上0.1%的人，真正的问题是怎么让剩下的99.9%也用上。"
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F916; AI Agent</span>
+                <a href="https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhynmhz7226303.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>Antigravity 2.0：从编码环境升级为Agent团队管理平台，日处理3万亿Token</h3>
+            </div>
+            <div class="description">
+                谷歌将6个月前发布的Antigravity编码环境全面升级为"用于开发和管理自主AI智能体团队的平台"。支持同时调度多个智能体并行工作（一个写代码、一个生成素材、一个规划架构）。新增托管智能体（一次API调用在隔离Linux环境启动）、CodeMender安全智能体（自动发现并修复代码漏洞）、AI内容检测API。使用量从3月每天0.5万亿token飙升至5月中旬超过3万亿token，10周增长6倍。提供独立桌面应用、命令行和SDK。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：日处理3万亿token | 10周增长6倍 | 支持多智能体并行调度
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F6E0;&#xFE0F; 开发者平台</span>
+                <a href="https://news.qq.com/rain/a/20260520A01NZU00" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>谷歌第八代TPU发布：训练专用+推理专用双芯片架构，资本支出1900亿美元</h3>
+            </div>
+            <div class="description">
+                谷歌发布第八代TPU双芯片架构：TPU v8o（训练专用）支持更快训练更大模型，"几周而非几个月"；TPU v8i（推理专用）比依赖通用GPU的竞争对手成本更低。谷歌2026年资本支出预计1800亿-1900亿美元，是4年前310亿美元的约6倍。皮查伊称，过去一年公司月处理Token达3.2千万亿，同比增长7倍；Gemini月活用户达9亿；搜索AI概览月活超25亿；AI模式用户超10亿。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：2026资本支出$1800-1900亿 | Gemini月活9亿 | 月处理3200万亿Token | AI模式用户10亿+
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F4BE; 基础设施</span>
+                <a href="https://finance.sina.com.cn/roll/2026-05-20/doc-inhynvwv7087579.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-anthropic">Anthropic</span>
+                <h3>Karpathy官宣加入Anthropic预训练团队，AI人才争夺战升级</h3>
+            </div>
+            <div class="description">
+                5月19日晚，OpenAI联合创始人、前特斯拉AI总监Andrej Karpathy官宣加入Anthropic，进入预训练团队。他将组建新子团队，用Claude加速预训练研究。Karpathy是AI领域最具影响力的技术领袖之一，曾师从Geoffrey Hinton和李飞飞，被称为"Vibe Coding之父"。他的加入被视为Anthropic在AI人才争夺战中的重大胜利。当前Anthropic估值已达1.2万亿美元，ARR突破440亿美元。此举标志着AI核心人才从OpenAI向Anthropic的流动趋势加速。
+            </div>
+            <div class="data-highlight">
+                <strong>关键人物</strong>：OpenAI联合创始人 | 前特斯拉AI总监 | "Vibe Coding之父" | 师从Hinton、李飞飞
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-19</span>
+                <span>&#x1F465; 人才流动</span>
+                <a href="https://news.pedaily.cn/202605/564103.shtml" class="source-link" target="_blank">&#x1F517; 投资界</a>
+                <a href="https://zhuanlan.zhihu.com/p/2040324113034630328" class="source-link" target="_blank">&#x1F517; 新智元</a>
+                <a href="https://news.qq.com/rain/a/20260520A021UG00" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-anthropic">Anthropic</span>
+                <h3>Anthropic 2.8亿欧元收购Stainless，掐断OpenAI/谷歌SDK供应链</h3>
+            </div>
+            <div class="description">
+                Anthropic宣布收购软件基础设施公司Stainless（约合22.18亿元人民币），虽然未公布交易细节，但行业消息称成交额超2.8亿欧元。Stainless是AI SDK领域的核心工具链公司，服务OpenAI和谷歌等主要客户。此次收购被业界视为典型的"掐断竞争对手供应链"式布局——Anthropic将获得对AI开发工具链的控制权，可能影响OpenAI和谷歌的API生态建设。这是Anthropic继300亿美元融资后的又一重大战略动作。
+            </div>
+            <div class="data-highlight">
+                <strong>交易金额</strong>：约2.8亿欧元（22.18亿元人民币）| 影响OpenAI、谷歌SDK生态
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-19</span>
+                <span>&#x1F48A; 战略收购</span>
+                <a href="https://www.ithome.com/0/952/057.htm" class="source-link" target="_blank">&#x1F517; IT之家</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-domestic">国产动态</span>
+                <h3>中国大模型周调用量连续三周超越美国，全球Token格局剧变</h3>
+            </div>
+            <div class="description">
+                据OpenRouter最新数据，上周（5月11-17日）全球AI大模型总调用量为26.9万亿Token，环比增长4.7%，连续四周上涨。其中中国AI大模型周调用量达7.693万亿Token，美国为4.24万亿Token（环比涨12.77%）。中国已连续三周稳居全球第一。腾讯Hy3模型表现突出。字节跳动年度资本开支预计突破2000亿元，阿里巴巴AI相关支出将远超3800亿元。国内日均Token调用量超140万亿，较2024年初增长1000倍以上。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：中国7.693万亿 vs 美国4.24万亿 | 全球26.9万亿/周 | 连续三周中国第一
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-18</span>
+                <span>&#x1F4CA; 市场数据</span>
+                <a href="https://finance.sina.com.cn/wm/2026-05-18/doc-inhyhuht8149676.shtml" class="source-link" target="_blank">&#x1F517; 每日经济新闻</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- B. 热门AI系统/产品 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:var(--gradient-3)">&#x1F4F1;</div>
+            <h2>B. 热门AI系统/产品</h2>
+            <span class="count">7条</span>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-product">AI编程</span>
+                <h3>Grok Build发布：马斯克xAI首款编程智能体，直指Claude Code</h3>
+            </div>
+            <div class="description">
+                马斯克旗下xAI发布首款AI编程智能体Grok Build，定位全桌面平台兼容、Agent智能体自主编程，直接对标Anthropic Claude Code与OpenAI Codex。该产品目前处于早期测试阶段，仅向付费订阅用户开放。xAI此前完成战略整合更名为SpaceXAI，全力加速进军AI编程赛道。尽管xAI内部人才流失问题持续困扰，但马斯克称"承认落后但正在追赶"。AI编程工具赛道已涌入Claude Code、Codex、Grok Build、DeepSeek-TUI等多方竞争者。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-14</span>
+                <span>&#x1F4BB; AI编程</span>
+                <a href="https://news.qq.com/rain/a/20260515A01NSG00" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+                <a href="https://finance.sina.com.cn/wm/2026-05-14/doc-inhxvyek8722646.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-product">AI视频</span>
+                <h3>可灵AI拟独立融资200亿美元：ARR达5亿美元翻倍增长，计划明年IPO</h3>
+            </div>
+            <div class="description">
+                快手正计划分拆旗下视频生成大模型"可灵AI"，以约200亿美元估值展开Pre-IPO轮融资，融资规模约20亿美元，腾讯等资本方有望参与。可灵当前ARR已达5亿美元，较春节前翻倍。预计2027年Q1启动IPO，届时ARR目标13亿美元。这一估值接近快手整体市值的70%。5月12日快手港股确认董事会正在评估重组方案。可灵此前在北京国际电影节发布业内首个原生4K直出视频模型（3840x2160分辨率），或将成为全球估值最高的AI视频生成厂商。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：估值$200亿 | ARR $5亿 | 融资$20亿 | 2026北京电影节发布4K视频模型
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-19</span>
+                <span>&#x1F3AC; AI视频</span>
+                <a href="https://finance.sina.com.cn/stock/aigcy/2026-05-12/doc-inhxqzkr8454072.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+                <a href="https://news.qq.com/rain/a/20260511A08OTZ00" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>Android XR智能眼镜首次曝光：内置Gemini AI助手，2026晚些时候上市</h3>
+            </div>
+            <div class="description">
+                在I/O 2026上，谷歌首次曝光Android XR智能眼镜，内置Gemini AI智能助手，基于Android XR系统。这标志着谷歌正式重返可穿戴AI硬件赛道。智能眼镜定位为AI随身助理，支持实时信息显示、语音交互和场景感知。预计2026年晚些时候正式发布，将与Meta Ray-Ban智能眼镜形成直接竞争。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F453; AI硬件</span>
+                <a href="https://www.msn.cn/zh-cn/news/other/google-io-2026" class="source-link" target="_blank">&#x1F517; CNMO</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>谷歌AI Ultra订阅推出$100/月开发者计划，AI Pro降至$20/月</h3>
+            </div>
+            <div class="description">
+                谷歌在I/O 2026上公布全新订阅定价策略：推出$100/月的开发者订阅计划（含Antigravity优先访问权、更高使用限制、Omni Flash访问权）；AI Ultra从$250降至$200/月；AI Pro维持$20/月不变。新开发者计划的推出，明显是针对Claude Code和GitHub Copilot争夺开发者市场。配合Antigravity 2.0平台和Gemini 3.5 Flash的低成本优势，谷歌正在构建完整的开发者生态壁垒。
+            </div>
+            <div class="data-highlight">
+                <strong>定价</strong>：开发者$100/月（新） | AI Ultra $200/月（降$50） | AI Pro $20/月
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F4B0; 商业化</span>
+                <a href="https://www.nbd.com.cn/articles/2026-05-20/4400193.html" class="source-link" target="_blank">&#x1F517; 每日经济新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-domestic">AI搜索</span>
+                <h3>豆包发布企业级知识引擎，AI搜索竞争全面转向"内容生态与商业闭环"</h3>
+            </div>
+            <div class="description">
+                字节跳动豆包发布企业级知识引擎，宣布其搜索结果中企业官方信源的权重提升40%。百度文心一言更新"商业内容优选算法"，将GEO优化纳入搜索结果排序核心因子。Kimi与阿里云通义千问在B端市场也加速布局。AI搜索领域竞争已从"对话体验"全面转向"内容生态与商业闭环"。国内AI应用付费化浪潮已启动：Kimi打赏机制、豆包68/200/500元三档付费、文心一言同步启动商业化。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F50D; AI搜索</span>
+                <a href="https://www.ithome.com/0/952/150.htm" class="source-link" target="_blank">&#x1F517; IT之家</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-product">端侧AI</span>
+                <h3>联发科发布天玑AI智能体引擎2.0，加速端侧Agent落地</h3>
+            </div>
+            <div class="description">
+                联发科在天玑开发者大会2026上发布天玑AI智能体引擎2.0和天玑AI开发套件3.0。借助天玑SensingClaw技术，可提供低功耗全时感知能力，赋能设备制造商打造具备主动感知和跨应用驱动能力的Agent OS。联发科已与OPPO、小米和传音合作推出系统原生Claw，展示主动感知、主动执行能力。作为全球出货量最大的手机芯片公司，联发科的入场意味着端侧AI Agent将快速覆盖数十亿设备。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-14</span>
+                <span>&#x1F4F1; 端侧AI</span>
+                <a href="https://cn.chinadaily.com.cn/a/202605/14/WS6a058c5ca310942cc49ac44c.html" class="source-link" target="_blank">&#x1F517; 中国日报</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-domestic">博云</span>
+                <h3>博云发布BoAgent智能体平台：面向政企级市场的AI原生Agent解决方案</h3>
+            </div>
+            <div class="description">
+                博云科技发布面向政企级市场的BoAgent智能体平台及全栈新品矩阵，同步推出AIOS、金融、OPC等垂直领域解决方案，全面启动四层生态合作战略。依托自主可控的Agentic AI技术体系，博云以平台化、工程化、安全化的智能体能力，助力千行百业加速数字化转型。三部门联合印发《智能体规范应用与创新发展实施意见》为行业发展提供政策支撑，政企级Agent平台需求快速增长。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-08</span>
+                <span>&#x1F3E2; 企业级</span>
+                <a href="https://www.msn.cn/zh-cn/tech" class="source-link" target="_blank">&#x1F517; MSN</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- C. AI自动化/效率工具 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:linear-gradient(135deg,#22c55e,#06b6d4)">&#x26A1;</div>
+            <h2>C. AI自动化/效率工具</h2>
+            <span class="count">4条</span>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-google">Google I/O</span>
+                <h3>谷歌发布智能体支付协议和内容检测API，构建Agent商业基础设施</h3>
+            </div>
+            <div class="description">
+                在I/O 2026上，谷歌推出两项关键的Agent基础设施：智能体支付协议（用户可设置批准品牌、消费上限、限定商家）和AI内容检测API（面向合规需求企业提供可追溯审计记录）。这两项发布表明，谷歌正在从技术层向商业规则层延伸——Agent不仅要能"做事"，还要能"安全地花钱"和"可审计地生成内容"。CodeMender安全智能体可自动发现并修复关键代码漏洞，进一步强化了Agent的可信度。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-20</span>
+                <span>&#x1F3D7;&#xFE0F; Agent基础设施</span>
+                <a href="https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhynmhz7226303.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-product">Vibe Coding</span>
+                <h3>2026年5月Vibe Coding生态爆发：AI Coding工具从代码补全进化到自主Agent</h3>
+            </div>
+            <div class="description">
+                2026年5月，AI Coding、Vibe Coding与低代码开发平台成为最热门赛道。从"写代码"到"用自然语言生成应用"，Claude Code、Cursor、GitHub Copilot、Windsurf、Trae、Cline、Gemini CLI、Aider等多款工具展开激烈竞争。Agent协作、多模态交互、无代码应用生成成为核心方向。AI编程已从辅助工具进化为"自主开发Agent"，个人开发者可用自然语言完成从前端到后端的全栈开发。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F4BB; 开发工具</span>
+                <a href="https://www.ithome.com/0/949/760.htm" class="source-link" target="_blank">&#x1F517; IT之家</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-product">工作流</span>
+                <h3>AI工作流自动化三巨头2026格局剧变：n8n从极客玩具变生产级方案</h3>
+            </div>
+            <div class="description">
+                2026年AI工作流自动化领域格局已与两年前完全不同。Make从"便宜替代品"变成了真正的可视化工作流平台；n8n从"极客玩具"变成了跑在生产环境里的开源方案；Zapier仍是最大玩家但面临开源冲击。三者各自定位：n8n适合自架部署、AI整合和无限制使用；Make适合可视化复杂逻辑；Zapier适合快速集成无需运维。AI Agent的兴起正在重写自动化工具的竞争规则。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x2699;&#xFE0F; 自动化工具</span>
+                <a href="https://futurepicker.com/zapier-vs-make-vs-n8n-automation-2026/" class="source-link" target="_blank">&#x1F517; FuturePicker</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-domestic">美团</span>
+                <h3>美团公测AI社区"觅游"：入驻Agent超3000个，AI应用商店初具规模</h3>
+            </div>
+            <div class="description">
+                美团公测AI社区平台"觅游"，已吸引超3000个Agent入驻。平台定位AI应用商店+社区，用户可发现、使用和分享各类AI Agent。这标志着国内互联网巨头从自研AI产品转向构建AI Agent生态平台的新趋势。平台涵盖餐饮、出行、本地生活等多个场景，Agent可独立完成从推荐到下单的全流程。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F37E; AI平台</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- D. OPC一人公司 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:linear-gradient(135deg,#22c55e,#84cc16)">&#x1F468;&#x200D;&#x1F4BC;</div>
+            <h2>D. OPC一人公司案例</h2>
+            <span class="count">4条</span>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-opc">OPC政策</span>
+                <h3>北京朝阳区加码AI+OPC：打造超级个体网络化协同新生态</h3>
+            </div>
+            <div class="description">
+                北京市朝阳区近日集中发布OPC支持政策、OPC社区矩阵、全要素运营服务平台等多项重磅成果，进一步完善AI+OPC产业发展的生态协同体系。政策涵盖算力补贴、空间供给、商事服务创新等多个维度，着力降低超级个体的创业门槛。朝阳区已形成多个OPC社区节点，通过"共享办公+AI算力+创业服务"模式，帮助超级个体实现从0到1的快速冷启动。此前辽宁、佛山南海区已率先推出省级和街道级OPC政策。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-19</span>
+                <span>&#x1F3D9;&#xFE0F; 政策扶持</span>
+                <a href="https://finance.sina.com.cn/jjxw/2026-05-19/doc-inhykxft7550054.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-opc">OPC实践</span>
+                <h3>OPC实践者坦白局：一人公司的理想与现实，决策疲劳成最大挑战</h3>
+            </div>
+            <div class="description">
+                科技连线专题报道揭示OPC真实生态。AI技术让一人公司成为新创业热词，但现实更复杂：一个人同时扮演CTO、CMO、CFO和首席客户，决策疲劳和孤独感成为最大挑战。多位OPC实践者坦白：AI承担了大部分执行工作，但战略判断、客户关系、商业决策仍需要人类核心能力。算力成本高、商业路径不明、融资难度大是三大痛点。报道指出，OPC真正适合的是已有行业经验的"超级个体"，而非完全的新手。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-18</span>
+                <span>&#x1F4AC; 深度报道</span>
+                <a href="https://news.qq.com/rain/a/20260518A06IOJ00" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-opc">成功案例</span>
+                <h3>人民日报聚焦杭州OPC：创业4个月，AI作文批改产品用户破1.5万</h3>
+            </div>
+            <div class="description">
+                人民日报报道杭州OPC典型案例：1998年出生的李云帆开发的AI作文批改产品"作文说"，上线4个月用户突破1.5万。他表示"AI承担了80%的编程工作，我是战略官、产品经理和首席运营官"。从代码编写到界面设计，AI都是他的"员工"。杭州"鸿鹄汇"OPC社区为创业者提供共享算力、法务支持和投融资对接服务。此案例证明OPC模式在教育垂直领域已具备可复制的商业闭环。
+            </div>
+            <div class="data-highlight">
+                <strong>案例数据</strong>：4个月1.5万用户 | AI承担80%编程 | 1998年出生创业者
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-14</span>
+                <span>&#x1F4C8; 成功案例</span>
+                <a href="https://finance.sina.com.cn/wm/2026-05-14/doc-inhxwkuc6751424.shtml" class="source-link" target="_blank">&#x1F517; 人民日报</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-opc">行业分析</span>
+                <h3>科技日报：AI热潮之下"一人公司"的成长与困境</h3>
+            </div>
+            <div class="description">
+                科技日报深度报道指出，经过几个月发展热潮，OPC样本更加多元，但超高价值公司仍凤毛麟角。算力成本高、商业路径不明、融资难度大、政策扶持与实际需求错位等挑战，导致大批OPC停留在设计阶段或已经夭折。报道建议OPC创业者应聚焦垂直领域刚需，避免与大公司正面竞争。三部门联合印发的《智能体规范应用与创新发展实施意见》为行业提供政策支撑，但关键在于找到可持续的商业模式。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F4CA; 行业分析</span>
+                <a href="https://news.ruc.edu.cn/2052550154108674050.html" class="source-link" target="_blank">&#x1F517; 科技日报</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- E. GitHub开源项目 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:linear-gradient(135deg,#a855f7,#ec4899)">&#x1F4BB;</div>
+            <h2>E. GitHub Trending 热门AI项目</h2>
+            <span class="count">15个</span>
+        </div>
+
+        <div class="mobile-scroll">
+            <table class="gh-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>项目名</th>
+                        <th>描述</th>
+                        <th>语言</th>
+                        <th>总星</th>
+                        <th>今日新增</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a href="https://github.com/tinyhumansai/openhuman" style="color:var(--accent-light);text-decoration:none" target="_blank">openhuman</a></td>
+                        <td>个人AI超级智能，私密、简洁且极其强大</td>
+                        <td><span class="lang lang-rust">Rust</span></td>
+                        <td class="stars">21,802</td>
+                        <td class="new-stars">+3,973 &#x1F525;</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a href="https://github.com/Imbad0202/academic-research-skills" style="color:var(--accent-light);text-decoration:none" target="_blank">academic-research-skills</a></td>
+                        <td>面向Claude Code的学术研究技能集（研究→写作→审阅→修订→定稿）</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">14,373</td>
+                        <td class="new-stars">+3,164</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><a href="https://github.com/multica-ai/andrej-karpathy-skills" style="color:var(--accent-light);text-decoration:none" target="_blank">andrej-karpathy-skills</a></td>
+                        <td>基于Karpathy对LLM编码陷阱观察优化的Claude Code行为配置</td>
+                        <td>—</td>
+                        <td class="stars">138,591</td>
+                        <td class="new-stars">+1,955</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><a href="https://github.com/obra/superpowers" style="color:var(--accent-light);text-decoration:none" target="_blank">superpowers</a></td>
+                        <td>Agentic技能框架与软件开发方法论</td>
+                        <td><span class="lang lang-shell">Shell</span></td>
+                        <td class="stars">198,712</td>
+                        <td class="new-stars">+1,623</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><a href="https://github.com/colbymchenry/codegraph" style="color:var(--accent-light);text-decoration:none" target="_blank">codegraph</a></td>
+                        <td>面向Claude Code/Codex/Cursor的预索引代码知识图谱，减少Token消耗</td>
+                        <td><span class="lang lang-ts">TS</span></td>
+                        <td class="stars">6,884</td>
+                        <td class="new-stars">+1,850</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><a href="https://github.com/rohitg00/agentmemory" style="color:var(--accent-light);text-decoration:none" target="_blank">agentmemory</a></td>
+                        <td>基于真实基准测试排名第一的AI编码Agent持久化记忆方案</td>
+                        <td><span class="lang lang-ts">TS</span></td>
+                        <td class="stars">14,330</td>
+                        <td class="new-stars">+1,609</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><a href="https://github.com/CloakHQ/CloakBrowser" style="color:var(--accent-light);text-decoration:none" target="_blank">CloakBrowser</a></td>
+                        <td>可通过所有机器人检测的隐身Chromium，Playwright直接替代品</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">16,796</td>
+                        <td class="new-stars">+1,463</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><a href="https://github.com/msitarzewski/agency-agents" style="color:var(--accent-light);text-decoration:none" target="_blank">agency-agents</a></td>
+                        <td>完整AI代理机构工具集，涵盖前端、社区、创意等多类专业Agent</td>
+                        <td><span class="lang lang-shell">Shell</span></td>
+                        <td class="stars">101,857</td>
+                        <td class="new-stars">+1,120</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><a href="https://github.com/HKUDS/CLI-Anything" style="color:var(--accent-light);text-decoration:none" target="_blank">CLI-Anything</a></td>
+                        <td>让所有软件具备Agent原生能力的CLI框架</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">37,873</td>
+                        <td class="new-stars">+1,038</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><a href="https://github.com/microsoft/ai-agents-for-beginners" style="color:var(--accent-light);text-decoration:none" target="_blank">ai-agents-for-beginners</a></td>
+                        <td>微软出品：12节课带你入门AI Agent开发</td>
+                        <td><span class="lang lang-python">Jupyter</span></td>
+                        <td class="stars">64,525</td>
+                        <td class="new-stars">+818</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><a href="https://github.com/humanlayer/12-factor-agents" style="color:var(--accent-light);text-decoration:none" target="_blank">12-factor-agents</a></td>
+                        <td>构建生产级LLM驱动软件的12条原则</td>
+                        <td><span class="lang lang-ts">TS</span></td>
+                        <td class="stars">21,261</td>
+                        <td class="new-stars">+736</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><a href="https://github.com/rtk-ai/rtk" style="color:var(--accent-light);text-decoration:none" target="_blank">rtk</a></td>
+                        <td>CLI代理工具，可将LLM Token消耗降低60-90%，零依赖Rust二进制</td>
+                        <td><span class="lang lang-rust">Rust</span></td>
+                        <td class="stars">51,093</td>
+                        <td class="new-stars">+704</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><a href="https://github.com/HKUDS/ViMax" style="color:var(--accent-light);text-decoration:none" target="_blank">ViMax</a></td>
+                        <td>Agentic视频生成系统（导演、编剧、制片人、视频生成器四合一）</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">5,561</td>
+                        <td class="new-stars">+503</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><a href="https://github.com/Alishahryar1/free-claude-code" style="color:var(--accent-light);text-decoration:none" target="_blank">free-claude-code</a></td>
+                        <td>在终端、VSCode或Discord中免费使用Claude Code（支持语音）</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">26,451</td>
+                        <td class="new-stars">+563</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><a href="https://github.com/anthropics/claude-plugins-official" style="color:var(--accent-light);text-decoration:none" target="_blank">claude-plugins-official</a></td>
+                        <td>Anthropic官方维护的高质量Claude Code插件目录</td>
+                        <td><span class="lang lang-python">Python</span></td>
+                        <td class="stars">20,314</td>
+                        <td class="new-stars">+171</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.85em;margin-top:12px">&#x1F4C5; 数据来源：GitHub Trending | 统计时间：2026年5月20日</p>
+    </div>
+
+    <!-- F. 行业动态 -->
+    <div class="section">
+        <div class="section-title">
+            <div class="section-icon" style="background:linear-gradient(135deg,#f97316,#ef4444)">&#x1F4F0;</div>
+            <h2>F. 行业动态</h2>
+            <span class="count">6条</span>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-policy">政策</span>
+                <h3>国务院部署2026年立法工作：人工智能综合性立法正式纳入规划</h3>
+            </div>
+            <div class="description">
+                国务院办公厅印发《国务院2026年度立法工作计划》，首次将人工智能综合性立法纳入年度立法规划。这意味着中国AI监管将从部门规章层面升级为国家法律层面。此前，三部门已联合印发《智能体规范应用与创新发展实施意见》，中央网信办启动"清朗·整治AI应用乱象"专项行动。欧盟AI法案修订版Omnibus也于5月7日达成临时协议，嵌入式AI产品合规截止日推迟至2028年8月。全球AI监管进入"强执行期"。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-11</span>
+                <span>&#x2696;&#xFE0F; 立法</span>
+                <a href="https://finance.sina.com.cn/jjxw/2026-05-11/doc-inhxppih2260798.shtml" class="source-link" target="_blank">&#x1F517; 新华社</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-industry">融资</span>
+                <h3>大模型融资狂潮：Kimi 136亿+DeepSeek 500亿，中国AI进入"诸神之战"</h3>
+            </div>
+            <div class="description">
+                2026年5月中国AI大模型赛道迎来融资爆炸：月之暗面（Kimi）完成约20亿美元（136亿元）D轮融资，投后估值突破200亿美元，由美团龙珠领投，累计融资超376亿元；DeepSeek启动首轮外部融资，计划募资500亿元，投后估值515亿美元，创中国AI企业单笔融资纪录。字节跳动年度资本开支预计突破2000亿元，阿里巴巴AI相关支出远超3800亿元。浙商证券报告指出，全球大模型竞争已从技术参数比拼转向商业化能力验证。
+            </div>
+            <div class="data-highlight">
+                <strong>融资数据</strong>：Kimi $20亿(估值$200亿) | DeepSeek 500亿(估值$515亿) | 字节2000亿 | 阿里3800亿+
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F4B0; 融资</span>
+                <a href="https://www.itbear.com.cn/html/2026-05/1345715.html" class="source-link" target="_blank">&#x1F517; ITBear</a>
+                <a href="https://news.qq.com/rain/a/20260507A055G300" class="source-link" target="_blank">&#x1F517; 腾讯新闻</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-policy">监管</span>
+                <h3>欧盟AI修订法案Omnibus落地：双轨监管路径重塑中国出海格局</h3>
+            </div>
+            <div class="description">
+                2026年5月7日，欧洲议会与欧盟理事会达成临时协议，通过AI法案重大修订（Omnibus）。核心变化包括：机械设备豁免直接适用AI法案（但安全要求被转移进机械法规框架），嵌入式AI产品合规截止日从2026年8月推迟至2028年8月。分析指出，豁免改变的是监管路径而非监管意图，欧委会保留随时加严的权力。对中国AI出海企业而言，仍需持续关注欧盟合规动态，"AI合规暂时不用管了"的判断是错误的。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-19</span>
+                <span>&#x1F310; 国际监管</span>
+                <a href="https://finance.sina.com.cn/wm/2026-05-19/doc-inhymumf2147504.shtml" class="source-link" target="_blank">&#x1F517; 新浪财经</a>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-industry">并购</span>
+                <h3>Cerebras纳斯达克上市首日暴涨68%，市值670亿美元，2026全球最大IPO</h3>
+            </div>
+            <div class="description">
+                AI芯片公司Cerebras在纳斯达克上市首日股价暴涨68%，市值达到670亿美元，成为2026年全球最大IPO。Cerebras以WSE-3晶圆级芯片闻名，专注于AI推理加速。此次上市的成功表明市场对AI基础设施公司的巨大信心。在谷歌第八代TPU同步发布的背景下，AI芯片领域的竞争正在从GPU（英伟达）向多元化（TPU、WSE、定制ASIC）方向演进。
+            </div>
+            <div class="data-highlight">
+                <strong>关键数据</strong>：首日暴涨68% | 市值$670亿 | 2026全球最大IPO | WSE-3晶圆级芯片
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05-16</span>
+                <span>&#x1F4C9; IPO</span>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-industry">生态</span>
+                <h3>AI创业公司ARR达800亿美元：Anthropic超300亿 vs OpenAI 240-250亿</h3>
+            </div>
+            <div class="description">
+                据最新行业数据，全球AI创业公司年化经常性收入（ARR）已达800亿美元规模。其中Anthropic以超300亿美元领跑，OpenAI为240-250亿美元，两强合计占据89%市场份额。Anthropic仅用两个月ARR就翻倍至440亿美元（最新数据），估值达1.2万亿美元首次反超OpenAI。Anthropic CFO透露，AI已编写公司90%代码，白领从执行者转为监督者。AI行业进入"赢家通吃"阶段，中小企业面临生存压力。
+            </div>
+            <div class="data-highlight">
+                <strong>ARR数据</strong>：行业总计$800亿 | Anthropic $300亿+ | OpenAI $240-250亿 | 两强占89%
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F4CA; 行业数据</span>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-tag tag-industry">人才</span>
+                <h3>GPT-5.6内测代码曝光，Codex环境开始跑测试，预计6月发布</h3>
+            </div>
+            <div class="description">
+                OpenAI下一代模型GPT-5.6的内部测试代码被开发者抓包，发现"ultrafast超极速模式"相关配置，预计推理速度提升2-3倍。Codex环境已开始运行GPT-5.6测试，预计6月正式发布。GPT-5.5发布仅三周后5.6代码就曝光，OpenAI的迭代速度"简直不给同行留活路"。同时OpenAI持续重组：ChatGPT/Codex/API三线合一，Brockman正式挂帅。GPT-5.5 Instant已全量推送，幻觉率下降52.5%。
+            </div>
+            <div class="meta">
+                <span>&#x1F4C5; 2026-05</span>
+                <span>&#x1F680; 即将发布</span>
+                <a href="https://www.36kr.com/p/3808515686309377" class="source-link" target="_blank">&#x1F517; 36氪</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Sources -->
+    <div class="news-card" style="background:var(--bg-secondary);border-color:var(--border)">
+        <h3 style="margin-bottom:12px">&#x1F4CB; 数据来源</h3>
+        <div class="description" style="color:var(--text-muted);font-size:0.9em">
+            新浪财经 / 每日经济新闻 / IT之家 / 凤凰科技 / 腾讯新闻 / 36氪 / 每日经济新闻 / 投资界 / 新智元 / 中国日报 / 知乎 / 人民日报 / 科技日报 / ITBear / 新华社 / 中国网信网 / CNMO / 环球财经 / GitHub Trending / Google I/O 2026
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>识墨AI日报</strong> &middot; 由AI行业资讯专家「识墨」出品</p>
+        <p>每日精选全球AI领域重要资讯 &middot; 覆盖大模型、产品、自动化、开源与行业动态</p>
+        <p style="margin-top:8px"><a href="index.html">&#x1F4C1; 返回存档目录</a></p>
+        <p style="margin-top:4px;color:var(--text-muted);font-size:0.8em">&copy; 2026 识墨AI · cehua2000.github.io</p>
+    </footer>
+
+</div>
+</body>
+</html>
