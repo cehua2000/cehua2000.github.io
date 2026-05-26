@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>识墨AI日报 | 2026年5月26日</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #12122a;
+            --bg-card: #1a1a3e;
+            --bg-card-hover: #222255;
+            --accent: #7c5cfc;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(124, 92, 252, 0.3);
+            --gold: #fbbf24;
+            --gold-dark: #d97706;
+            --text-primary: #f0f0ff;
+            --text-secondary: #b0b0d0;
+            --text-muted: #7070a0;
+            --red: #ef4444;
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --border: #2a2a5a;
+            --gradient-1: linear-gradient(135deg, #7c5cfc, #a78bfa);
+            --gradient-2: linear-gradient(135deg, #fbbf24, #f59e0b);
+            --gradient-3: linear-gradient(135deg, #3b82f6, #06b6d4);
+            --gradient-4: linear-gradient(135deg, #ec4899, #f43f5e);
+            --gradient-5: linear-gradient(135deg, #22c55e, #10b981);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height:1.8;
+            font-size:16px;
+        }
+        .container { max-width:1100px; margin:0 auto; padding:20px 16px; }
+
+        /* Header */
+        .header {
+            text-align:center; padding:48px 20px 36px;
+            background: linear-gradient(180deg, #1a0a3a 0%, var(--bg-primary) 100%);
+            border-radius:20px; margin-bottom:32px; position:relative; overflow:hidden;
+        }
+        .header::before {
+            content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+            background: radial-gradient(circle at 50% 50%, rgba(124,92,252,0.08) 0%, transparent 50%);
+            animation:pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform:scale(1); opacity:0.5; }
+            50% { transform:scale(1.1); opacity:0.8; }
+        }
+        .header .date-badge {
+            display:inline-block; background:var(--gradient-1); color:white;
+            padding:6px 20px; border-radius:20px; font-size:0.85em; font-weight:600;
+            margin-bottom:16px; position:relative; z-index:1;
+        }
+        .header h1 {
+            font-size:2.2em; font-weight:800; margin-bottom:8px;
+            background: linear-gradient(135deg, #f0f0ff, #a78bfa);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text; position:relative; z-index:1;
+        }
+        .header .subtitle { color:var(--text-secondary); font-size:1em; position:relative; z-index:1; }
+
+        /* Section */
+        .section { margin-bottom:32px; }
+        .section-title {
+            font-size:1.3em; font-weight:700; margin-bottom:20px; padding-bottom:10px;
+            border-bottom:2px solid var(--border); display:flex; align-items:center; gap:10px;
+        }
+        .section-title .icon { font-size:1.3em; }
+        .section-title .count {
+            font-size:0.7em; font-weight:500; color:var(--text-muted); margin-left:6px;
+        }
+
+        /* Cards */
+        .card {
+            background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
+            padding:28px; margin-bottom:20px; position:relative; overflow:hidden;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            background:var(--bg-card-hover); border-color:var(--accent);
+            transform:translateY(-2px); box-shadow: 0 8px 32px var(--accent-glow);
+        }
+        .card .card-tag {
+            display:inline-block; padding:3px 12px; border-radius:12px;
+            font-size:0.75em; font-weight:600; margin-bottom:12px;
+        }
+        .card .card-title {
+            font-size:1.15em; font-weight:700; color:var(--text-primary); margin-bottom:10px;
+            line-height:1.6;
+        }
+        .card .card-body { color:var(--text-secondary); font-size:0.95em; line-height:1.9; }
+        .card .card-body p { margin-bottom:10px; }
+        .card .card-body strong { color:var(--text-primary); }
+        .card .card-body .highlight { color:var(--gold); font-weight:600; }
+        .card .card-source {
+            margin-top:16px; padding-top:12px; border-top:1px solid var(--border);
+            font-size:0.82em; color:var(--text-muted);
+        }
+        .card .card-source a { color:var(--accent-light); text-decoration:none; }
+        .card .card-source a:hover { text-decoration:underline; }
+
+        .tag-red { background:rgba(239,68,68,0.15); color:#ef4444; }
+        .tag-blue { background:rgba(59,130,246,0.15); color:#3b82f6; }
+        .tag-green { background:rgba(34,197,94,0.15); color:#22c55e; }
+        .tag-purple { background:rgba(124,92,252,0.15); color:#a78bfa; }
+        .tag-gold { background:rgba(251,191,36,0.15); color:#fbbf24; }
+        .tag-pink { background:rgba(236,72,153,0.15); color:#ec4899; }
+
+        /* Highlights box */
+        .highlights-box {
+            background: linear-gradient(135deg, rgba(124,92,252,0.1), rgba(251,191,36,0.1));
+            border:1px solid rgba(124,92,252,0.3); border-radius:16px; padding:28px;
+            margin-bottom:32px;
+        }
+        .highlights-box h3 {
+            font-size:1.15em; font-weight:700; color:var(--gold); margin-bottom:16px;
+            display:flex; align-items:center; gap:8px;
+        }
+        .highlights-box ol { padding-left:20px; }
+        .highlights-box li {
+            color:var(--text-secondary); margin-bottom:10px; line-height:1.7;
+            font-size:0.95em;
+        }
+        .highlights-box li strong { color:var(--text-primary); }
+
+        /* Table */
+        .data-table {
+            width:100%; border-collapse:separate; border-spacing:0;
+            border-radius:12px; overflow:hidden; margin:16px 0;
+        }
+        .data-table th {
+            background:var(--gradient-1); color:white; font-weight:600;
+            text-align:left; padding:12px 16px; font-size:0.9em;
+        }
+        .data-table td {
+            padding:12px 16px; border-bottom:1px solid var(--border);
+            font-size:0.9em; color:var(--text-secondary);
+        }
+        .data-table tr:hover td { background:rgba(124,92,252,0.05); }
+        .data-table .num { font-weight:700; color:var(--gold); text-align:center; min-width:40px; }
+
+        /* Footer */
+        .footer {
+            text-align:center; padding:40px 20px; margin-top:40px;
+            border-top:1px solid var(--border); color:var(--text-muted); font-size:0.9em;
+        }
+        .footer .nav-links { display:flex; justify-content:center; gap:24px; margin-bottom:16px; }
+        .footer .nav-links a { color:var(--accent-light); text-decoration:none; }
+        .footer .nav-links a:hover { text-decoration:underline; }
+
+        /* Responsive */
+        @media (max-width:768px) {
+            .container { padding:12px; }
+            .header { padding:32px 16px; }
+            .header h1 { font-size:1.5em; }
+            .card { padding:20px; }
+            .data-table { font-size:0.8em; }
+            .data-table th, .data-table td { padding:8px 10px; }
+        }
+
+        /* GitHub table special */
+        .gh-table td:first-child { color:var(--gold); font-weight:700; }
+        .gh-table .stars { color:var(--red); font-weight:700; }
+        .gh-table a { color:var(--accent-light); text-decoration:none; }
+        .gh-table a:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+    <div class="date-badge">📅 2026年5月26日 · 星期二</div>
+    <h1>识墨AI日报</h1>
+    <p class="subtitle">每日精选全球AI资讯 · 第26期</p>
+</div>
+
+<!-- 今日要点 -->
+<div class="highlights-box">
+    <h3>🔥 今日要点</h3>
+    <ol>
+        <li><strong>GPT-5.6 意外曝光：150万Token上下文窗口，6月发布</strong> — 多名开发者在Codex后端日志中发现iris-alpha模型，上下文较GPT-5.5扩大43%</li>
+        <li><strong>Anthropic最快本周完成超300亿美元融资，估值突破9000亿美元</strong> — 超越OpenAI成为全球估值最高AI初创企业，Q2营收预计达109亿美元</li>
+        <li><strong>月之暗面启动VIE/红筹架构拆除，正式冲刺港股IPO</strong> — 继智谱、MiniMax之后，"AI六小龙"再添一家冲击二级市场</li>
+        <li><strong>智谱发布GLM-5.1高速版API：400 tokens/s刷新全球速度纪录</strong> — 首次在国产大模型中实现旗舰级能力与极限速度的统一</li>
+        <li><strong>华为发表半导体"韬(τ)定律"，6年量产381款芯片</strong> — 中国首次在全球半导体领域提出指导产业发展的新原则</li>
+        <li><strong>全球AI大模型调用量连续五周上涨，中国贡献9.2万亿Token</strong> — OpenRouter数据：总调用量28.9万亿，中国占比32%，周环比+19.89%</li>
+        <li><strong>GitHub今日热榜：Understand-Anything日涨5,604⭐领衔，Claude Skills生态持续扩张</strong></li>
+        <li><strong>豆包付费体系落地：3.45亿月活推出68~500元/月订阅，国产大模型免费时代终结</strong></li>
+    </ol>
+</div>
+
+<!-- A. 大模型更新 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🧠</span> 一、大模型更新 <span class="count">（7条）</span>
+    </div>
+
+    <!-- GPT-5.6 -->
+    <div class="card">
+        <span class="card-tag tag-red">OpenAI</span>
+        <div class="card-title">GPT-5.6 意外曝光：150万Token上下文窗口，内部代号 iris-alpha，6月发布</div>
+        <div class="card-body">
+            <p>5月26日，<strong>多名开发者在OpenAI Codex后端日志中发现未官宣模型GPT-5.6</strong>，内部代号为<strong>iris-alpha</strong>。据披露，该模型支持高达<strong class="highlight">150万Token上下文窗口</strong>，较GPT-5.5的105万Token扩大约43%。除了iris-alpha外，还发现了ember-alpha与beacon-alpha相关版本。</p>
+            <p>有用户已通过ChatGPT Pro的OAuth认证，在Codex环境中成功调用未公布的gpt-5.6模型，<strong>实测1.5M长上下文已能跑通</strong>。知名爆料人Leo透露，GPT-5.6开发周期已进入全速阶段，<strong>首批检查点已启动内部测试</strong>，预计<strong>6月正式亮相</strong>。</p>
+            <p>此次曝光的背景颇为微妙：GPT-5.5发布仅三周即被"剧透"下一代，显示OpenAI正以前所未有的速度推进模型迭代。同时也呼应了OpenAI近期对Codex的大力推广——Altman亲自宣布<strong>为切换公司提供两月免费Codex</strong>，试图从Anthropic手中夺回编程市场份额。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://news.qq.com/rain/a/20260526A0255700" target="_blank">IT之家/腾讯新闻</a> · <a href="https://www.itbear.com.cn/html/2026-05/1359309.html" target="_blank">ITBear</a> · <a href="https://www.sohu.com/a/1022687486_120315" target="_blank">搜狐科技</a>
+        </div>
+    </div>
+
+    <!-- Anthropic融资 -->
+    <div class="card">
+        <span class="card-tag tag-purple">Anthropic</span>
+        <div class="card-title">Anthropic最快本周完成超300亿美元融资，估值突破9000亿美元超越OpenAI</div>
+        <div class="card-body">
+            <p>据彭博社5月23日报道，Anthropic<strong>最快本周完成超300亿美元</strong>的新一轮融资，公司估值有望<strong class="highlight">突破9000亿美元</strong>，一举超越OpenAI的8520亿美元估值，登顶全球AI初创企业估值榜首。</p>
+            <p>本轮融资阵容豪华：<strong>红杉资本、Dragoneer Investment Group、Altimeter Capital和Greenoaks Capital Partners</strong>四家机构联合领投。Anthropic年化经常性收入（ARR）已达440亿美元，<strong>Q2营收预计109亿美元</strong>，环比翻倍增长。</p>
+            <p>在Claude Code拿下超半数编程市场份额、企业市占率34.4%首次反超OpenAI的背景下，此次融资标志着Anthropic在"资本+技术+市场"三线全面压过OpenAI。公司还在冲刺10月IPO。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.nbd.com.cn/articles/2026-05-25/4406727.html" target="_blank">每日经济新闻</a> · <a href="https://finance.sina.com.cn/stock/hkstock/ggscyd/2026-05-23/doc-inhyvtiu4662331.shtml" target="_blank">新浪财经</a> · <a href="https://www.itbear.com.cn/html/2026-05/1355566.html" target="_blank">ITBear</a>
+        </div>
+    </div>
+
+    <!-- 智谱GLM-5.1 -->
+    <div class="card">
+        <span class="card-tag tag-blue">智谱AI</span>
+        <div class="card-title">智谱发布GLM-5.1高速版API：400 tokens/s刷新全球速度纪录</div>
+        <div class="card-body">
+            <p>5月22日，智谱正式面向部分企业客户推出<strong>GLM-5.1高速版API（GLM-5.1-HighSpeed）</strong>，输出速度达到惊人的<strong class="highlight">400 tokens/s</strong>，刷新当前全球大模型厂商API的速度上限。这一突破打破了行业内"高速模型几乎总是轻量级模型"的固有认知——智谱首次在国产大模型中<strong>将旗舰级模型能力与极限速度统一</strong>。</p>
+            <p>GLM-5.1高速版适用于AI编程、实时交互、商业决策、实时语音等对响应延迟要求极高的场景。智谱已于2026年1月在港交所上市，成为"AI六小龙"首家登陆资本市场者。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://xueqiu.com/3191867971/390436720" target="_blank">雪球</a> · <a href="https://baijiahao.baidu.com/s?id=1865879553218432035" target="_blank">百度百家号</a>
+        </div>
+    </div>
+
+    <!-- Kimi K2系列下线 -->
+    <div class="card">
+        <span class="card-tag tag-gold">月之暗面</span>
+        <div class="card-title">Kimi K2系列模型API正式下线，全面切换至K2.6；月之暗面启动红筹架构拆除冲刺港股IPO</div>
+        <div class="card-body">
+            <p>5月25日，月之暗面Kimi官方宣布<strong>Kimi K2系列模型API下线</strong>，将不再维护和支持，请开发者直接迁移至最新模型<strong>kimi-k2.6</strong>，以获得更强的多模态理解、思考、代码和Agent能力。同一天，彭博社报道月之暗面已通知股东，<strong>正式启动VIE及红筹架构拆除工作</strong>，为赴港IPO扫清最后一道监管障碍。</p>
+            <p>月之暗面此前已完成<strong>20亿美元D轮融资，投后估值200亿美元（约1367亿人民币）</strong>。半年不到累计融资超39亿美元，日均进账近两亿。继智谱AI和MiniMax先后登陆港股后，"AI六小龙"中第三家即将进入上市冲刺阶段。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://baijiahao.baidu.com/s?id=1866207935939415056" target="_blank">IT之家/百度百家号</a> · <a href="https://caifuhao.eastmoney.com/news/20260525123450883498410" target="_blank">东方财富</a>
+        </div>
+    </div>
+
+    <!-- DeepSeek融资 -->
+    <div class="card">
+        <span class="card-tag tag-red">DeepSeek</span>
+        <div class="card-title">DeepSeek推进700亿人民币融资接近完成，梁文锋承诺坚持开源</div>
+        <div class="card-body">
+            <p>据彭博社报道，DeepSeek新一轮融资规模为<strong class="highlight">700亿元人民币（约100亿美元）</strong>，已进入最后阶段，目标估值约500亿美元。梁文锋已向潜在投资者承诺公司将继续开发<strong>开源AI模型</strong>，而非追求短期商业化。消息称<strong>腾讯作为投资者和客户双重身份参与其中</strong>，国资基金亦有出资意向。</p>
+            <p>DeepSeek V4-Pro此前宣布API永久降价75%，输入仅0.435美元/百万token，较GPT-5.5便宜约98%。同时组建Harness团队主攻代码Agent，对标Claude Code。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://nai500.com/zh-hans/blog/2026/05/deepseek-100-agi-0700-hk/" target="_blank">NAI500</a> · <a href="https://www.ithome.com/0/953/832.htm" target="_blank">IT之家</a>
+        </div>
+    </div>
+
+    <!-- 豆包收费 -->
+    <div class="card">
+        <span class="card-tag tag-pink">字节跳动</span>
+        <div class="card-title">豆包推出付费会员体系：68~500元/月三档，3.45亿月活告别"全免费"</div>
+        <div class="card-body">
+            <p>字节跳动旗下AI应用「豆包」于5月正式推出付费订阅体系，提供<strong>标准版68元/月、加强版200元/月、专业版500元/月</strong>三档服务，年付最高可达5088元。免费版不会取消，付费服务主要面向PPT生成、数据分析、视频生成等复杂生产力场景。</p>
+            <p>豆包目前拥有<strong>3.45亿月活用户</strong>，是国内月活第一的AI应用。据火山引擎披露，截至2026年3月，豆包大模型日均Token使用量已突破<strong>120万亿</strong>。此举标志着国产大模型"全免费"格局出现首次大规模松动——Kimi、通义千问、智谱等此前也已陆续缩减免费额度或推出付费方案，唯一逆行者是百度文心一言宣布<strong>全面免费</strong>。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.xinhuanet.com/globe/20260526/8761919cbaa54cb0b8b95c0d38f87e80/c.html" target="_blank">新华网</a> · <a href="https://finance.sina.com.cn/wm/2026-05-12/doc-inhxspnc4912930.shtml" target="_blank">新浪财经</a>
+        </div>
+    </div>
+
+    <!-- 微软×Anthropic -->
+    <div class="card">
+        <span class="card-tag tag-blue">微软+Anthropic</span>
+        <div class="card-title">微软与Anthropic洽谈Maia芯片供应合作，AI算力军备升级</div>
+        <div class="card-body">
+            <p>据财联社5月22日报道，微软正在与Anthropic洽谈，计划向后者提供其定制AI芯片<strong>Maia 200</strong>。如果达成协议，将成为微软在AI芯片领域的一项重要突围——目前微软在向客户提供专用AI芯片方面仍落后于亚马逊和谷歌。Anthropic目前尚未就使用Maia 200芯片做出最终决定。</p>
+            <p>值得注意的是，Anthropic CFO此前透露公司AI已编写其<strong>90%的代码</strong>，而Google I/O 2026公布的月Token处理量达<strong>3.2千万亿</strong>，同比增长7倍。AI算力需求仍在指数级增长。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://finance.sina.com.cn/jjxw/2026-05-22/doc-inhytcuz7863602.shtml" target="_blank">财联社/新浪财经</a>
+        </div>
+    </div>
+</div>
+
+<!-- B. 热门AI系统/产品 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">🚀</span> 二、热门AI系统/产品 <span class="count">（5条）</span>
+    </div>
+
+    <!-- Google I/O 余波 -->
+    <div class="card">
+        <span class="card-tag tag-blue">Google</span>
+        <div class="card-title">Google I/O 2026余波：Gemini 3.5 Flash全面上线，Spark 24小时AI管家即将开放</div>
+        <div class="card-body">
+            <p>Google I/O 2026于5月19-20日召开后持续释放产品细节：<strong>Gemini 3.5 Flash</strong>输出Token速度约为其他前沿模型的<strong>4倍</strong>，已整合至谷歌搜索AI Mode和AI Overviews；搜索框迎来<strong>25年来最大重构</strong>，支持图片、文件、视频、Chrome标签页多模态输入，并能主动监控网页变化推送提醒。</p>
+            <p><strong>Gemini Spark（全天候AI代理）</strong>部署于Google Cloud虚拟机，支持24小时持续运行、跨应用多步骤任务，首先向美国<strong>Google AI Ultra订阅用户</strong>开放，Ultra套餐从$250/月降至<strong>$200/月</strong>。Gemini Omni视频编辑模型也同日可用。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://news.qq.com/rain/a/20260520A06UN700" target="_blank">腾讯新闻</a> · <a href="https://segmentfault.com/a/1190000047779576" target="_blank">SegmentFault</a>
+        </div>
+    </div>
+
+    <!-- OpenAI Codex -->
+    <div class="card">
+        <span class="card-tag tag-green">AI编程</span>
+        <div class="card-title">OpenAI打响编程补贴战：Codex免费两个月，GPT-5.6蓄势待发</div>
+        <div class="card-body">
+            <p>Sam Altman亲自在X上宣布：<strong>Codex免费两个月</strong>，并为切换公司提供迁移工具（设置、插件、技能、基础设施、项目等一键迁移）。此举直指Claude Code的编程市场份额。</p>
+            <p>与此同时，OpenAI在5月上半月连发三款产品：<strong>GPT-5.5 Instant</strong>模型升级、<strong>Codex移动端</strong>支持、以及企业级部署公司<strong>DeployCo</strong>。AI编程工具正从桌面走向移动端，从个人工具走向企业级部署。</p>
+            <p>Anthropic也不甘示弱——Dario Amodei在近期专访中透露，<strong>Claude新功能几乎完全由AI自主开发</strong>，Claude Code拿下超过半数市场份额。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.36kr.com/p/3809110898401285" target="_blank">36氪</a> · <a href="https://www.51cto.com/article/843364.html" target="_blank">51CTO</a>
+        </div>
+    </div>
+
+    <!-- AI视频赛道 -->
+    <div class="card">
+        <span class="card-tag tag-purple">AI视频</span>
+        <div class="card-title">AI视频生成进入"生产力落地"阶段：Sora 2、Veo 3、Runway Gen-4.5、可灵3.0大混战</div>
+        <div class="card-body">
+            <p>2026年5月，AI视频生成工具从"技术炫技"正式进入<strong>"生产力落地"</strong>阶段。当前主流工具：<strong>OpenAI Sora 2</strong>（全量API开放，支持30秒到10分钟视频）、<strong>Google Veo 3.1</strong>（Gemini Omni驱动，支持视频元素编辑）、<strong>Runway Gen-4.5</strong>、<strong>Pika 2.5</strong>以及中国黑马<strong>可灵Kling 3.0</strong>。</p>
+            <p>据实测数据，采用AI视频工具的创作者平均<strong>制作效率提升500%</strong>，单条视频制作成本<strong>降低78%</strong>。Midjourney也已推出V8.1版本，并涉足视频生成赛道。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://braindetox.kr/zh/posts/ai_video_generation_tools_2026_comparison.html" target="_blank">BrainDetox</a> · <a href="https://maplefeather.com/article/ai-video-generator-comparison-2026" target="_blank">MapleFeather</a>
+        </div>
+    </div>
+
+    <!-- AI搜索 -->
+    <div class="card">
+        <span class="card-tag tag-gold">AI搜索</span>
+        <div class="card-title">AI搜索进入深度学习时代：Perplexity、秘塔AI、天工AI三足鼎立</div>
+        <div class="card-body">
+            <p>2026年，AI搜索引擎已全面替代传统关键词搜索。主流产品中，<strong>Perplexity Pro</strong>以其精准度和来源追溯领先，但国内使用受限；<strong>秘塔AI搜索</strong>以千万月活和中文优化见长，此前API降价70%；<strong>天工AI</strong>和<strong>360AI搜索</strong>也在加速布局。Google搜索也在I/O上宣布升级为"AI Search"，将Gemini 3.5 Flash整合进AI Mode。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://ai-tools.publicdata.online/articles/2026-04-02-ai-search-engines-comparison.html" target="_blank">AI Tools评测</a> · <a href="https://dgtsell.com/articles/perplexity-pro-review-china-2026" target="_blank">DGTSell</a>
+        </div>
+    </div>
+
+    <!-- Claude Cowork插件 -->
+    <div class="card">
+        <span class="card-tag tag-purple">开发者工具</span>
+        <div class="card-title">Anthropic开源知识工作者插件库knowledge-work-plugins，打造企业级岗位专家</div>
+        <div class="card-body">
+            <p>5月26日，Anthropic在GitHub上开源了<strong>knowledge-work-plugins</strong>插件库，专门面向知识工作者在Claude Cowork环境中使用。该项目旨在通过特定插件，使Claude能够深度适配用户的具体岗位需求，今日GitHub星数已增长<strong>1,441⭐</strong>，展现开发者对该方向的强烈关注。</p>
+            <p>这是Anthropics继Claude Code、Claude Plugins Official之后，在企业知识工作场景的又一次深耕。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://aitoolly.com/zh/ai-news/article/2026-05-26-anthropic-introduces-open-source-knowledge-work-plugins-to-customize-claude-cowork-for-professional" target="_blank">AIToolly</a> · <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<!-- C. AI自动化/效率工具 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">⚡</span> 三、AI自动化/效率工具 <span class="count">（4条）</span>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-green">企业AI</span>
+        <div class="card-title">AI Agent成企业数字化"新基建"：从单点工具到系统级智能，2026年规模化落地</div>
+        <div class="card-body">
+            <p>Gartner在5月发布的最新趋势分析指出，到2028年<strong>75%的企业软件工程师将使用AI代码助手</strong>。多家国际科技研究机构确认，企业级AI Agent正从概念验证走向规模化落地，正在成为驱动业务流程重构的核心引擎。</p>
+            <p>中国企业级AI市场呈现<strong>平台化、场景化、服务化</strong>三大核心趋势：奥哲云枢、百度智能云、阿里云智能在基础AI平台与生态构建上优势突出，华为云EI、商汤科技、旷视科技在垂直行业深耕。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.sohu.com/a/1022307496_122440928" target="_blank">搜狐科技</a> · <a href="https://finance.sina.com.cn/stock/relnews/hk/2026-05-14/doc-inhxvtwr3972861.shtml" target="_blank">新浪财经</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-blue">零代码AI</span>
+        <div class="card-title">无代码AI工作流平台爆发：2026年最值得关注的35款AI自动化工具出炉</div>
+        <div class="card-body">
+            <p>thunderbit.com于5月发布<strong>2026年最值得关注的35款AI自动化工具</strong>清单，覆盖CRM自动化、发票处理、客服支持、数据管道等场景。无代码AI工作流平台正以前所未有的速度降低企业AI应用门槛，让非技术人员也能构建复杂的AI自动化流程。</p>
+            <p>AI Coding平台也在不断加速演进。IT之家5月报道，从"写代码"到"用自然语言生成应用"，<strong>Vibe Coding</strong>成为2026年最热门话题之一，Agent协作、多模态交互、无代码应用生成等方向国内外平台不断加速。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://thunderbit.com/zh-Hans/blog/best-ai-automation-tools" target="_blank">thunderbit</a> · <a href="https://www.ithome.com/0/949/760.htm" target="_blank">IT之家</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-purple">Karpathy</span>
+        <div class="card-title">Karpathy加入Anthropic后首讲："Vibe Coding已死，Software 3.0来了"</div>
+        <div class="card-body">
+            <p>Andrej Karpathy在加入Anthropic后的首次公开分享中宣布，<strong>自己亲手发明的"Vibe Coding"概念已经"分叉"</strong>——进入生产环境必须有更严肃的工程框架。他提出<strong>Software 3.0</strong>的新范式，强调AI编程需要从"随意生成"转向可测试、可审查、可部署的工程级流程。这与Anthropic旗下Superpowers工具（199k星）所倡导的"先设计→TDD→子代理并行→两阶段审查"工作流高度一致。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.51cto.com/article/844189.html" target="_blank">51CTO</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-gold">AI安全</span>
+        <div class="card-title">今日GitHub热榜：754个AI网络安全技能项目登榜，映射5大安全框架</div>
+        <div class="card-body">
+            <p>项目<strong>Anthropic-Cybersecurity-Skills</strong>以日涨1,004⭐登上GitHub Trending，提供754个结构化网络安全技能，映射至MITRE ATT&CK、NIST CSF 2.0、MITRE ATLAS、D3FEND及NIST AI RMF五大框架。兼容Claude Code、GitHub Copilot、Codex CLI、Cursor、Gemini CLI等20+平台，标志着AI自动化安全审计进入标准化阶段。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank">GitHub</a>
+        </div>
+    </div>
+</div>
+
+<!-- D. OPC一人公司案例 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">💼</span> 四、OPC一人公司案例 <span class="count">（4条）</span>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-green">行业趋势</span>
+        <div class="card-title">36.3%新公司由一人创办：2026年AI Agent驱动"一人公司"革命</div>
+        <div class="card-body">
+            <p>腾讯云开发者社区2026年4月报告显示：<strong>独立创始人比例同比飙升53%，36.3%的新注册公司由一人创办</strong>。AI Agent实现全栈开发、产品运营、客户服务一体化，单人借助AI可完成传统10-20人团队的工作量。</p>
+            <p>从苏州到深圳，"一个人、一台电脑、一个AI模型"正在成为新的创业范式。中国经营报深度调查指出，"一人独角兽"时代已经来临。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://cloud.tencent.com/developer/article/2656375" target="_blank">腾讯云社区</a> · <a href="https://news.qq.com/rain/a/20260418A01ERU00" target="_blank">中国经营报</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-blue">独立开发者</span>
+        <div class="card-title">8个AI独立开发者真实案例：有人月入数万元，Micro-SaaS红利持续</div>
+        <div class="card-body">
+            <p>知乎最新整理的独立开发者案例中，8个真实AI副业项目覆盖文档处理、AI图像工具、自动化营销、跨境电商选品等赛道。部分案例创始人月收入达<strong>数万元人民币</strong>，全部采用"AI生成+人工调优"的工作模式，开发周期较传统方式缩短80%以上。</p>
+            <p>有28岁国企辞职者分享经验："把想法告诉AI，立刻就能生成初稿，自己再调整优化。近两个月收入已略超当初工资。"这些案例印证了OPC模式正在从"概念验证"进入"稳定现金流"阶段。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://zhuanlan.zhihu.com/p/2040940485741700877" target="_blank">知乎</a> · <a href="https://www.sohu.com/a/988295415_122456421" target="_blank">搜狐</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-gold">电商AI</span>
+        <div class="card-title">跨境电商+AI应用爆发：选品、文案、客服全面AI化，单人GMV破百万</div>
+        <div class="card-body">
+            <p>2026年跨境电商AI应用进入深水区。独立站卖家大量使用AI工具进行<strong>多语言产品描述生成、SEO优化、广告素材制作、客户服务自动化</strong>。Shopify/Amazon平台的AI插件生态日趋成熟，单人卖家借助AI工具实现从选品到交付的全链路管理，部分案例实现<strong>单人年GMV超百万美元</strong>。</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-pink">政策利好</span>
+        <div class="card-title">辽宁出台全国首个省域OPC扶持政策，一人公司获政策背书</div>
+        <div class="card-body">
+            <p>5月17日，辽宁省出台全国首个省域层面的OPC（一人公司）专项扶持政策，从注册简化、税收优惠、融资支持等多维度为AI驱动的个体创业者提供制度保障。这是继国家层面鼓励数字经济后，地方政府的首次具体落地。</p>
+        </div>
+    </div>
+</div>
+
+<!-- E. GitHub开源项目 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📦</span> 五、GitHub Trending 热门AI项目 <span class="count">（Top 10）</span>
+    </div>
+
+    <p style="color:var(--text-secondary);margin-bottom:16px;font-size:0.95em;">📅 采录时间：2026年5月26日 · 数据来源：GitHub Trending</p>
+
+    <table class="data-table gh-table">
+        <thead>
+            <tr>
+                <th style="width:40px;">#</th>
+                <th style="width:180px;">项目名</th>
+                <th>描述</th>
+                <th style="width:80px;">语言</th>
+                <th style="width:90px;">今日⭐</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="num">1</td>
+                <td><a href="https://github.com/Lum1104/Understand-Anything" target="_blank">Understand-Anything</a></td>
+                <td>将任意代码转化为可交互知识图谱，支持探索、搜索、提问。兼容Claude Code、Codex、Cursor、Copilot等</td>
+                <td>TypeScript</td>
+                <td class="stars">+5,604</td>
+            </tr>
+            <tr>
+                <td class="num">2</td>
+                <td><a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank">ai-engineering-from-scratch</a></td>
+                <td>系统化AI工程学习项目：Learn it. Build it. Ship it.</td>
+                <td>Python</td>
+                <td class="stars">+3,154</td>
+            </tr>
+            <tr>
+                <td class="num">3</td>
+                <td><a href="https://github.com/colbymchenry/codegraph" target="_blank">codegraph</a></td>
+                <td>预索引代码知识图谱，降低token消耗和工具调用，100%本地运行，兼容Claude Code、Codex、Cursor等</td>
+                <td>TypeScript</td>
+                <td class="stars">+3,161</td>
+            </tr>
+            <tr>
+                <td class="num">4</td>
+                <td><a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">andrej-karpathy-skills</a></td>
+                <td>基于Karpathy对LLM编码缺陷观察的单文件Claude Code行为优化配置</td>
+                <td>—</td>
+                <td class="stars">+2,749</td>
+            </tr>
+            <tr>
+                <td class="num">5</td>
+                <td><a href="https://github.com/affaan-m/ECC" target="_blank">ECC</a></td>
+                <td>Agent性能优化系统：技能、本能、记忆、安全及研究优先开发，支持Claude Code、Codex、Cursor等</td>
+                <td>JavaScript</td>
+                <td class="stars">+2,025</td>
+            </tr>
+            <tr>
+                <td class="num">6</td>
+                <td><a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank">knowledge-work-plugins</a></td>
+                <td>Anthropic官方知识工作插件库，面向Claude Cowork环境</td>
+                <td>Python</td>
+                <td class="stars">+1,441</td>
+            </tr>
+            <tr>
+                <td class="num">7</td>
+                <td><a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills" target="_blank">Anthropic-Cybersecurity-Skills</a></td>
+                <td>754个结构化网络安全技能，映射5大安全框架，兼容20+平台</td>
+                <td>Python</td>
+                <td class="stars">+1,004</td>
+            </tr>
+            <tr>
+                <td class="num">8</td>
+                <td><a href="https://github.com/garrytan/gstack" target="_blank">gstack</a></td>
+                <td>YC CEO Garry Tan的Claude Code配置：23个工具充当CEO/设计师/工程经理/文档/QA</td>
+                <td>TypeScript</td>
+                <td class="stars">+640</td>
+            </tr>
+            <tr>
+                <td class="num">9</td>
+                <td><a href="https://github.com/manaflow-ai/cmux" target="_blank">cmux</a></td>
+                <td>基于Ghostty的macOS终端，带垂直标签页和AI编码代理通知</td>
+                <td>Swift</td>
+                <td class="stars">+603</td>
+            </tr>
+            <tr>
+                <td class="num">10</td>
+                <td><a href="https://github.com/hardikpandya/stop-slop" target="_blank">stop-slop</a></td>
+                <td>AI文本"水话"去除技能：消灭AI生成的套路化陈词滥调</td>
+                <td>—</td>
+                <td class="stars">+345</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card" style="margin-top:16px;">
+        <span class="card-tag tag-purple">趋势洞察</span>
+        <div class="card-body">
+            <p><strong>今日Trending最大主题：Claude Code生态全面爆发。</strong>Top 10中至少7个项目明确标注兼容Claude Code，涵盖代码知识图谱（Understand-Anything、codegraph）、Agent优化（ECC）、Skill文件（andrej-karpathy-skills、stop-slop、taste-skill）、网络安全插件（Anthropic-Cybersecurity-Skills）、知识工作插件（knowledge-work-plugins）和YC创始人全套配置（gstack）。</p>
+            <p>这标志着Claude Code已从"工具"演变为"平台"，第三方开发者正在围绕其构建完整的工具链生态。</p>
+        </div>
+    </div>
+</div>
+
+<!-- F. 行业动态 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📡</span> 六、行业动态 <span class="count">（6条）</span>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-gold">华为主导</span>
+        <div class="card-title">华为发表半导体"韬（τ）定律"：中国首次提出全球芯片产业指导原则</div>
+        <div class="card-body">
+            <p>5月25日，华为董事、半导体业务部总裁<strong>何庭波</strong>在IEEE国际电路系统研讨会ISCAS 2026上，首次提出<strong class="highlight">半导体"韬（τ）定律"</strong>，这是中国在全球半导体领域首次提出指导产业发展的新原则。过去6年中，华为基于该定律已成功<strong>设计和量产381款芯片</strong>，覆盖千行万业。</p>
+            <p>该定律的发布改变了全球半导体竞赛的叙事方式，虽然能否获得国际社会广泛接受尚待检验，但其背后381款量产芯片的事实数据不容忽视。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://news.qq.com/rain/a/20260526A024FZ00" target="_blank">每日经济新闻/腾讯新闻</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-red">算力数据</span>
+        <div class="card-title">全球AI大模型周调用量连续五周上涨：中国9.2万亿Token，环比+19.89%</div>
+        <div class="card-body">
+            <p>OpenRouter数据显示，2026年5月18-24日全球AI大模型总调用量达<strong class="highlight">28.9万亿Token</strong>，环比增长<strong>7.4%</strong>，连续五周上涨。其中<strong>中国AI大模型周调用量9.223万亿Token（占比32%）</strong>，环比增长19.89%；美国4.93万亿Token，环比增长16.27%。</p>
+            <p>价格不再是最关键的决定因素，技术创新、开发者生态和场景落地能力正成为下一阶段竞争的核心。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://news.qq.com/rain/a/20260526A024FZ00" target="_blank">OpenRouter/每日经济新闻</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-blue">服务器短缺</span>
+        <div class="card-title">纬颖警告：AI服务器最大挑战在零部件短缺，存储/PCB/MLCC供不应求</div>
+        <div class="card-body">
+            <p>纬颖总经理林威远5月25日表示，AI服务器面临严重缺料，涉及<strong>存储、高阶PCB板、MLCC（片式多层陶瓷电容器）</strong>等关键零部件。公司需每日与供应商、客户沟通供料状况。GPU虽逐渐放量，但零部件短缺或将直接制约AI算力交付的真实速度。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://news.qq.com/rain/a/20260526A024FZ00" target="_blank">每日经济新闻</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-green">AI立法</span>
+        <div class="card-title">国家发改委正开展AI立法研究，中国AI监管进入"强执行期"</div>
+        <div class="card-body">
+            <p>2026年，中国AI监管从"建章立制"进入<strong>"强执行期"</strong>。新修订的《网络安全法》首次写入人工智能促进与监管专门条款；国家发改委5月透露正开展AI立法研究；工信部等十部门3月发布《人工智能科技伦理审查与管理办法》。与此同时，中国对AI内容安全、数据合规、算法备案的要求持续收紧。分析指出，违规企业最高可能面临<strong>全球年营业额7%</strong>的处罚。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.miit.gov.cn/jgsj/kjs/wjfb/art/2026/art_2995f16b28504ddcbb604e918eb15759.html" target="_blank">工信部</a> · <a href="https://www.sohu.com/a/1022880731_122705007" target="_blank">搜狐</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-red">资本支出</span>
+        <div class="card-title">全球AI资本狂潮：字节年度资本开支破2000亿元，阿里将超3800亿</div>
+        <div class="card-body">
+            <p>浙商证券最新报告显示，中国科技巨头AI资本投入持续加码：<strong>字节跳动年度资本开支预计突破2000亿元</strong>，<strong>阿里巴巴未来AI相关支出将远超3800亿元</strong>。国际市场上，2026年Q1全球AI行业融资总额达<strong>2555亿美元</strong>，但头部寡头垄断格局加剧——仅OpenAI、Anthropic、xAI三家包揽全球67.3%的AI融资。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.itbear.com.cn/html/2026-05/1345715.html" target="_blank">浙商证券/ITBear</a> · <a href="https://www.sohu.com/a/1025975758_120800396" target="_blank">搜狐</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="card-tag tag-purple">AI伦理</span>
+        <div class="card-title">AI伦理安全指引发布，AI"大模型收费"与"文心一言免费"形成分化格局</div>
+        <div class="card-body">
+            <p>2026年Q1-Q2，国内AI行业掀起两轮"收费浪潮"：豆包、阿里通义、腾讯混元、智谱、Kimi、MiniMax等集体缩减免费额度或推出付费订阅。唯一的逆行者是<strong>百度文心一言宣布全面免费</strong>，形成了"基础免费、增值收费"与"全面免费"两条截然不同的商业化路径。</p>
+            <p>新华网5月26日分析指出，中国大模型企业难以简单复制美国高价订阅模式，普遍采取"基础能力免费、复杂能力付费、高成本能力限额、交易场景转化"的分层策略。</p>
+        </div>
+        <div class="card-source">
+            来源：<a href="https://www.xinhuanet.com/globe/20260526/8761919cbaa54cb0b8b95c0d38f87e80/c.html" target="_blank">新华网</a> · <a href="https://xueqiu.com/7295781779/389344218" target="_blank">雪球</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="nav-links">
+        <a href="index.html">📚 日报存档</a>
+        <a href="/">🏠 返回首页</a>
+        <a href="https://github.com/cehua2000/cehua2000.github.io" target="_blank">📂 GitHub</a>
+    </div>
+    <p>© 2026 识墨AI · Powered by WorkBuddy · 每日自动生成</p>
+    <p>总计覆盖 <strong>26条</strong> 新闻 · 数据来源：AITNT News · GitHub Trending · 新浪科技 · 腾讯新闻 · 新华网 · 彭博社 · 每日经济新闻</p>
+    <p style="margin-top:8px;">📧 反馈/建议：<a href="mailto:hello@namedestin.com" style="color:var(--accent-light);">hello@namedestin.com</a></p>
+</div>
+
+</div>
+</body>
+</html>
