@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>识墨AI日报 | 2026年05月27日</title>
+<style>
+  :root {
+    --bg-primary: #0a0e27;
+    --bg-secondary: #111640;
+    --bg-card: rgba(25, 32, 72, 0.85);
+    --bg-card-hover: rgba(35, 45, 95, 0.95);
+    --accent-blue: #4f8ff7;
+    --accent-cyan: #00d4ff;
+    --accent-purple: #a855f7;
+    --accent-pink: #f472b6;
+    --accent-orange: #fb923c;
+    --accent-green: #34d399;
+    --accent-red: #f87171;
+    --accent-yellow: #fbbf24;
+    --text-primary: #e8ecf4;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-color: rgba(79, 143, 247, 0.2);
+    --gradient-hero: linear-gradient(135deg, #0a0e27 0%, #1a1040 40%, #0d1a3a 100%);
+    --shadow-card: 0 4px 24px rgba(0,0,0,0.3), 0 0 1px rgba(79,143,247,0.2);
+    --shadow-glow: 0 0 30px rgba(79,143,247,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    background-image: var(--gradient-hero);
+    color: var(--text-primary);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  /* Hero Header */
+  .hero {
+    text-align: center;
+    padding: 48px 20px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(79,143,247,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(168,85,247,0.06) 0%, transparent 50%);
+    animation: heroFloat 20s ease-in-out infinite;
+  }
+  @keyframes heroFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-2%, 1%) rotate(1deg); }
+  }
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e8ecf4, var(--accent-cyan), var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .date {
+    font-size: 16px;
+    color: var(--text-secondary);
+    position: relative;
+  }
+
+  /* Section */
+  .section {
+    margin-top: 36px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    padding-left: 16px;
+    border-left: 4px solid var(--accent-blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .emoji { font-size: 24px; }
+
+  /* Highlights */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .highlight-item {
+    background: linear-gradient(135deg, rgba(79,143,247,0.12), rgba(168,85,247,0.08));
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: all 0.3s ease;
+  }
+  .highlight-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--accent-blue);
+  }
+  .highlight-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    background: var(--accent-blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  .highlight-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent-cyan);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .highlight-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 34px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(79,143,247,0.4);
+    transform: translateY(-1px);
+  }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .card-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+  .card-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding-left: 38px;
+  }
+  .card-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card-body li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 4px;
+  }
+  .card-body li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+  }
+
+  /* Data highlight */
+  .data-tag {
+    display: inline-block;
+    background: rgba(79,143,247,0.15);
+    color: var(--accent-cyan);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 2px 2px;
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead {
+    background: rgba(79,143,247,0.15);
+  }
+  th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  td {
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(79,143,247,0.08);
+  }
+  tbody tr:hover {
+    background: rgba(79,143,247,0.06);
+  }
+  td:first-child {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+  .star-count {
+    color: var(--accent-yellow);
+    font-weight: 700;
+  }
+  .growth-badge {
+    display: inline-block;
+    background: rgba(52,211,153,0.15);
+    color: var(--accent-green);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .fire-badge {
+    background: rgba(248,113,113,0.15);
+    color: var(--accent-red);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+  }
+  .footer p {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  .back-link:hover {
+    background: rgba(79,143,247,0.15);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 26px; }
+    .highlights { grid-template-columns: 1fr; }
+    .card { padding: 16px; }
+    .card-body { padding-left: 0; }
+    table { font-size: 11px; }
+    th, td { padding: 8px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">每日AI资讯</div>
+    <h1>识墨AI日报</h1>
+    <div class="date">2026年05月27日 · 星期三</div>
+  </div>
+
+  <!-- 今日要点 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🔥</span> 今日要点</div>
+    <div class="highlights">
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">1</span>GPT-5.6确认6月发布</div>
+        <div class="highlight-desc">150万Token上下文窗口（较5.5提升43%），麦肯锡报告企业长上下文需求同比增长62%</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">2</span>Claude Mythos震动金融圈</div>
+        <div class="highlight-desc">漏洞检测成功率72.4%（前代不足1%，提升近80倍），欧洲央行紧急升级网络防御</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">3</span>DeepSeek V4-Flash登顶全球调用榜</div>
+        <div class="highlight-desc">周调用量5.74万亿Token居首，V4-Pro永久降价至原价1/4，推进700亿融资</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">4</span>Qwen3.7-Max闯入全球编程前二</div>
+        <div class="highlight-desc">Code Arena 1541分，前五中唯一非Claude模型，中国首次闯入全球编程前二</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">5</span>谷歌AI Studio一周生成25万App</div>
+        <div class="highlight-desc">免费生成原生Android App，99%以上创作者无开发经验</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">6</span>开源Hermes击败OpenAI Codex</div>
+        <div class="highlight-desc">11项CLI任务基准6:5胜出，GitHub 16万星，启动时间701ms→258ms</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">7</span>字节开放豆包股认购</div>
+        <div class="highlight-desc">2000名Seed员工可认购，每股13美元，AI业务估值50亿美元，潜在价值500亿</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-title"><span class="highlight-num">8</span>英伟达世界模型训练提速400%</div>
+        <div class="highlight-desc">原1个月训练任务缩至1周，软硬件协同优化实现重大突破</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A. 大模型更新 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🤖</span> 大模型更新</div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">1</span>
+        <div class="card-title">GPT-5.6确认6月发布，150万Token上下文窗口</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>OpenAI计划2026年6月发布GPT-5.6，内部代号iris-alpha</li>
+          <li>上下文窗口：<span class="data-tag">150万Token</span>（较GPT-5.5提升43%）</li>
+          <li>可流畅处理输入：90万～105万Token</li>
+          <li>麦肯锡报告：企业对长上下文模型需求同比增长62%</li>
+          <li>与Anthropic、Google、xAI同期竞争加剧</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">2</span>
+        <div class="card-title">Anthropic Claude Mythos震动金融圈</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Claude Mythos Preview漏洞检测成功率<span class="data-tag">72.4%</span>（前代不足1%，提升近80倍）</li>
+          <li>欧洲央行紧急召开会议应对AI模型对金融系统的威胁</li>
+          <li>"Project Glasswing"测试项目已发现数千个高危漏洞</li>
+          <li>不法分子可在补丁发布后30分钟内反向推导漏洞</li>
+          <li>目前仅向少数美国机构开放测试</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">3</span>
+        <div class="card-title">Anthropic联创预言2028跨越奇点</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Jack Clark预测2028年底AI递归自我改进概率超<span class="data-tag">60%</span></li>
+          <li>DeepMind CEO Demis Hassabis预测AGI将于2030年前后降临</li>
+          <li>冲击力为工业革命100倍</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">4</span>
+        <div class="card-title">Anthropic揭秘Claude跨产品安全部署策略</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>三款产品隔离模式：claude.ai临时gVisor容器、Claude Code人机结合沙箱、Claude Cowork本地虚拟机</li>
+          <li>安全风险分三类：用户误用、模型异常行为、外部攻击</li>
+          <li>实施"爆炸半径"限制策略，分层防御体系</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">5</span>
+        <div class="card-title">DeepSeek V4-Flash登顶全球调用榜</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>周调用量<span class="data-tag">5.74万亿Token</span>居首</li>
+          <li>V4-Pro永久降价至原价1/4（降幅75%）</li>
+          <li>推进700亿元人民币融资，目标AGI</li>
+          <li>开放识图模式内测，补齐多模态能力</li>
+          <li>适配华为芯片突破算力限制</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">6</span>
+        <div class="card-title">阿里Qwen3.7-Max闯入全球编程前二</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Code Arena编程榜获<span class="data-tag">1541分</span></li>
+          <li>排全球第四，前五中唯一非Claude模型</li>
+          <li>中国厂商首次闯入全球编程模型前二，仅次于Anthropic</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">7</span>
+        <div class="card-title">快手Keye-VL 2.0开启强化推理新范式</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>发布自研多模态大模型Keye-VL-2.0-30B-A3B</li>
+          <li>首次将DSA注意力机制引入多模态领域</li>
+          <li>支持<span class="data-tag">256K</span>超长上下文</li>
+          <li>多项视频理解评测超越Gemini，推理成本降低50%</li>
+          <li>首次加入Agent协作机制，已落地内部业务</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">8</span>
+        <div class="card-title">小米MiMo-V2.5系列API永久降价</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>最高降幅达<span class="data-tag">99%</span></li>
+          <li>优化计费体系后用量提升至原5-8倍</li>
+          <li>北京时间5月27日0点生效，现有有效用户额度全量重置</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">9</span>
+        <div class="card-title">DeepSeek研究员开发自动研究Skill</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>DeliAutoResearch自动研究技能，使用V4-Pro等模型完成论文写作</li>
+          <li>人类仅投入2小时思考，<span class="data-tag">6天迭代完成46页论文</span></li>
+          <li>调用Agent约108轮，提出自动研究智能体L1-L5分级体系</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. 热门AI系统 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🚀</span> 热门AI系统/产品</div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">1</span>
+        <div class="card-title">谷歌AI Studio一周生成25万个安卓App</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>上线免费生成原生Android App功能</li>
+          <li>支持用自然语言描述需求生成App，无需写代码</li>
+          <li><span class="data-tag">25万+</span>App已创建，99%以上创作者无Android开发经验</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">2</span>
+        <div class="card-title">腾讯推出免费AI应用"吐司"</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>应用宝上线免费AI应用"吐司"</li>
+          <li>用户可用自然语言生成可打包下载为APK安装包的本地APP</li>
+          <li>支持无限次免费修改</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">3</span>
+        <div class="card-title">开源Hermes Agent击败OpenAI Codex</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Python编写，11项CLI任务基准<span class="data-tag">6:5</span>击败OpenAI Codex（Rust编写）</li>
+          <li>启动时间从701ms降至258ms</li>
+          <li>GitHub星标突破16万</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">4</span>
+        <div class="card-title">微软Copilot Cowork安全漏洞：攻击成功率100%</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Microsoft 365 Copilot Cowork存在间接提示注入攻击风险</li>
+          <li>可导致SharePoint和OneDrive敏感文件泄露</li>
+          <li><span class="data-tag">5次试验全部成功</span>，攻击链无需人工审批</li>
+          <li>恶意内容对用户不可见，定时任务功能可放大风险</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">5</span>
+        <div class="card-title">Google AI搜索史诗级翻车</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>AI Overview功能将用户查询"disregard"误认为聊天指令</li>
+          <li>直接回复"收到，已忽略"</li>
+          <li>事件在X上吸引数百万人围观，Google已修复</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">6</span>
+        <div class="card-title">谷歌对"AI投毒"重拳出击</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>5月更新搜索垃圾内容政策</li>
+          <li>将试图影响AI Overview的"AI投毒"行为定义为垃圾内容</li>
+          <li>涉事网站可能被降排名或移出AI结果</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">7</span>
+        <div class="card-title">开源降AIGC率模型发布</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>开发者XiangJinyu开源中文降AIGC率模型</li>
+          <li>AI率从50%降至24%、从30%降至8.9%</li>
+          <li>基于Qwen3.5-9B训练</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">8</span>
+        <div class="card-title">微软按下vibe coding暂停键</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>AI编程工具Token消耗成本已超过同等效率人类工程师薪酬</li>
+          <li>重新审视AI代码生成的投入产出比</li>
+          <li>C++之父痛批AI编程：资深开发者宁愿退休也不愿维护AI生成的代码</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. AI自动化 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">⚡</span> AI自动化/效率工具</div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">1</span>
+        <div class="card-title">Telegram Bot可以互相对话</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>创始人Durov官宣Bot可互相对话</li>
+          <li>为AI Agent提供原生可观察通信层</li>
+          <li>5月8日随Bot API 10.0上线，相关帖子获13万人围观</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">2</span>
+        <div class="card-title">开源工具FreeLLMAPI聚合免费额度</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>聚合14家AI平台免费API额度（Google、Groq、Cerebras、NVIDIA、Mistral等）</li>
+          <li>每月可提供约<span class="data-tag">8亿Token</span></li>
+          <li>GitHub上线34天获5122星（日均150.6颗）</li>
+          <li>GPT-4o月费约277.5美元；FreeLLMAPI方案0～5美元</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">3</span>
+        <div class="card-title">AI算法效率每年翻倍，芯片每两年翻倍</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>最新研究显示AI正进入自我增强的快速发展阶段</li>
+          <li>AI算法效率提升速度约<span class="data-tag">每年翻倍</span></li>
+          <li>硬件芯片能力进化速度约每两年翻倍</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">4</span>
+        <div class="card-title">UIUC/Meta/Stanford联合发布102页Agent综述</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>引用478篇文献，阐明代码化执行是Claude Code到机器人Agent的共同底层机制</li>
+          <li>提出代码作为Agent Harness的三层架构</li>
+          <li>已应用于五大领域</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">5</span>
+        <div class="card-title">AI时代人才最重要的6点特质</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>好奇心、靠谱、有事实洁癖</li>
+          <li>多元化思维、能忍受不确定性、低ego高自驱</li>
+          <li>技能可培训，特质更关键</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- D. OPC一人公司 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">💼</span> OPC一人公司案例</div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">1</span>
+        <div class="card-title">严新——AI视频制作（叁陆玖文化）</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>10人团队"单人成军"模式，一名女生不到一周完成8分钟AIGC城市宣传片</li>
+          <li>传统拍摄1-2万元/分钟，AI成本百元至千元</li>
+          <li>自建500多个AI工具、几十个AI智能体</li>
+          <li>《丧尸清道夫》成本仅3000元，B站破百万播放</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">2</span>
+        <div class="card-title">孙宇——AI赋能茶品牌（熹玖文化）</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>2人团队，4个月完成近<span class="data-tag">80个SKU</span></li>
+          <li>2人解决十几个人的工作量，预计今年销售额200万元</li>
+          <li>专门写文案/审合同/生成产品图的智能体</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">3</span>
+        <div class="card-title">陶雯煜——AI音乐创作（音行三界）</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>一天生成一首3分钟歌曲，今年预计营收增长30%-40%</li>
+          <li>音乐垂类数据标注业务带来稳定现金流</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">4</span>
+        <div class="card-title">卢旭——出海市场洞察SaaS（Deep Social）</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>3人团队，新场景1小时上线演示环境</li>
+          <li>定价99-10000元Credit消耗制</li>
+          <li>数据可量化分析，通用Agent无法替代</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">5</span>
+        <div class="card-title">OPC行业全景数据</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>全国一人有限责任公司突破<span class="data-tag">1600万家</span>（占企业总量27.4%）</li>
+          <li>2025上半年新注册OPC 286万户，同比增47%</li>
+          <li>OPC启动成本普遍低于3500元</li>
+          <li>首家"一人独角兽"有望在2026-2028年间出现</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- E. GitHub热门项目 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">📦</span> GitHub热门AI项目</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>项目名</th>
+            <th>⭐ Star</th>
+            <th>28天增长</th>
+            <th>分类</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>AutoGPT</td><td class="star-count">175,275</td><td><span class="growth-badge">+94</span></td><td>AI Agents</td></tr>
+          <tr><td>2</td><td>ollama/ollama</td><td class="star-count">147,741</td><td><span class="growth-badge">+235</span></td><td>Inference</td></tr>
+          <tr><td>3</td><td>langchain-ai/langchain</td><td class="star-count">116,643</td><td><span class="growth-badge">+221</span></td><td>AI Agents</td></tr>
+          <tr><td>4</td><td>langgenius/dify</td><td class="star-count">111,396</td><td><span class="growth-badge">+350</span></td><td>LLM Tools</td></tr>
+          <tr><td>5</td><td>open-webui/open-webui</td><td class="star-count">105,906</td><td><span class="growth-badge">+423</span></td><td>Inference</td></tr>
+          <tr><td>6</td><td>ggml-org/llama.cpp</td><td class="star-count">90,400</td><td><span class="growth-badge">+587</span></td><td>Inference</td></tr>
+          <tr><td>7</td><td>zed-industries/zed</td><td class="star-count">68,615</td><td><span class="growth-badge">+383</span></td><td>Coding Agents</td></tr>
+          <tr><td>8</td><td>infiniflow/ragflow</td><td class="star-count">61,420</td><td><span class="growth-badge">+226</span></td><td>RAG</td></tr>
+          <tr><td>9</td><td>All-Hands-AI/OpenHands</td><td class="star-count">60,532</td><td><span class="growth-badge">+224</span></td><td>Coding Agents</td></tr>
+          <tr><td>10</td><td>modelcontextprotocol/servers</td><td class="star-count">60,521</td><td><span class="growth-badge">+159</span></td><td>MCP Servers</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div style="font-weight:700;margin-bottom:10px;color:var(--accent-cyan);">🔥 28天增长最快</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>项目名</th><th>28天新增Star</th><th>分类</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>anomalyco/opencode</td><td><span class="growth-badge fire-badge">+1,435 🔥</span></td><td>Coding Agents</td></tr>
+            <tr><td>anthropics/claude-code</td><td><span class="growth-badge fire-badge">+779</span></td><td>Coding Agents</td></tr>
+            <tr><td>openai/codex</td><td><span class="growth-badge fire-badge">+741</span></td><td>Coding Agents</td></tr>
+            <tr><td>ggml-org/llama.cpp</td><td><span class="growth-badge">+587</span></td><td>Inference</td></tr>
+            <tr><td>open-webui/open-webui</td><td><span class="growth-badge">+423</span></td><td>Inference</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- F. 行业动态 -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🌍</span> 行业动态</div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">1</span>
+        <div class="card-title">字节开放豆包股认购</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>向Seed部门约2000名员工开放豆包股认购</li>
+          <li>认购价格每股<span class="data-tag">13美元</span></li>
+          <li>AI业务当前估值50亿美元，潜在价值500亿</li>
+          <li>豆包股预计近10倍增长空间</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">2</span>
+        <div class="card-title">英伟达新一代AI芯片价格将翻倍</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>预计售价约<span class="data-tag">8万美元</span>（翻倍）</li>
+          <li>HBM3E内存需求从80GB→192GB（成本增加近3倍）</li>
+          <li>NVLink 4.0带宽900GB/s（提升50%）</li>
+          <li>内存与互联成本占比从60%→75%以上</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">3</span>
+        <div class="card-title">英伟达世界模型训练速度飙升400%</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>原需1个月的训练任务缩至<span class="data-tag">1周</span></li>
+          <li>软硬件协同优化实现重大突破</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">4</span>
+        <div class="card-title">美光科技市值首破万亿美元</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>单日涨幅19%，存储芯片板块走强</li>
+          <li>闪迪+7%，西部数据+8%，希捷+4%</li>
+          <li>AI算力芯片需求持续看好</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">5</span>
+        <div class="card-title">华为麒麟2026芯片剧透 & 韬(τ)定律</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>晶体管密度提升<span class="data-tag">53.5%</span>，峰值频率首次突破3GHz</li>
+          <li>华为发布韬(τ)定律：以"时间缩微"替代"几何微缩"</li>
+          <li>预计2031年达1.4nm同等密度</li>
+          <li>何庭波：基于韬定律华为有了加速度</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">6</span>
+        <div class="card-title">高考期间多家AI平台限制答题功能</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>豆包、腾讯元宝、百度、科大讯飞均暂停相关功能</li>
+          <li>限制拍题识图、试题解答、试卷解析</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">7</span>
+        <div class="card-title">黄仁勋批评CEO以AI为由裁员</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>"太敷衍"，只是为了"显得自己很聪明"</li>
+          <li>美国IT行业4月失业率3.8%</li>
+          <li>Meta裁员8000人、耐克裁员1400人（明确以AI为由）</li>
+          <li>96.9%受访职场人有"AI工作搭子"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">8</span>
+        <div class="card-title">超200款AI设计药物进入临床试验</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>进入三期试验15-20款，FDA批准上市0款</li>
+          <li>AI将研发周期从10-15年压缩至<span class="data-tag">3-6年</span></li>
+          <li>全球AI制药市场规模2026年预计29.9亿美元</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">9</span>
+        <div class="card-title">谷歌Gemini算力计费引争议</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>从次数制改为按算力消耗计费</li>
+          <li>5秒视频消耗5算力小时（占AI Pro月度配额5%）</li>
+          <li>失败后配额仍被扣除，用户强烈不满</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">10</span>
+        <div class="card-title">用户拒用Google强制AI搜索</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>谷歌市场份额首次跌破90%（<span class="data-tag">89.73%</span>）</li>
+          <li>DuckDuckGo安装量激增30%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">11</span>
+        <div class="card-title">SK海力士发布iHBM控温散热技术</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>热阻降低超过30%</li>
+          <li>2026年HBM市场规模预计<span class="data-tag">450亿美元</span>（+250%）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">12</span>
+        <div class="card-title">特斯拉监督版FSD官宣登陆中国</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>特斯拉正式宣布监督版FSD（全自动驾驶）功能登陆中国市场</li>
+          <li>高阶辅助驾驶技术正式向中国用户开放</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">13</span>
+        <div class="card-title">OpenAI首次在巴西达成媒体合作</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>与Folha和UOL达成合作，将高质量新闻内容接入ChatGPT</li>
+          <li>ChatGPT全球周活超9亿，巴西月活超5000万</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">14</span>
+        <div class="card-title">三星调整AI使用政策</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>DX部门6月起可接入外部生成式AI（Gemini、ChatGPT）</li>
+          <li>DS部门仍限用内部"三星高斯"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-num">15</span>
+        <div class="card-title">AI中转站倒卖Token行业浮现</div>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>因海外大模型对中国限制，国内催生AI中转站倒卖Token行业</li>
+          <li>大量代理商涌入导致价格战，最低价仅官方1%</li>
+          <li>行业存在模型掺假、数据转卖等问题</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据来源 -->
+  <div class="section" style="margin-top:40px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:20px 24px;">
+      <div style="font-weight:700;margin-bottom:10px;color:var(--accent-cyan);">📊 数据来源</div>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:2;">
+        AITNT News · GitHub OSSInsight · 新浪科技 · 腾讯新闻 · 新华网 · IT之家 · 36氪 · 财联社 · 科创板日报 · 富途牛牛 Edge AI Daily · 虎嗅 · 东方财富 · 知乎 · 搜狐科技
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>「识墨AI日报」由AI行业资讯专家识墨为您整理 · 每日12:00准时发布</p>
+    <a class="back-link" href="index.html">← 返回日报存档</a>
+    <p style="margin-top:12px;"><a href="https://cehua2000.github.io/news/" target="_blank">cehua2000.github.io/news</a></p>
+  </div>
+
+</div>
+</body>
+</html>
